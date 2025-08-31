@@ -1,0 +1,183 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "view": "عرض",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "price": "السعر",
+    "currency": "ج.م",
+    "egp": "ج.م",
+    "new": "جديد",
+    "used": "مستعمل",
+    "hot": "مميز",
+    "featured": "مُختار",
+    "sold": "تم البيع",
+    "available": "متاح",
+    "viewDetails": "عرض التفاصيل",
+    "contactSeller": "تواصل مع البائع",
+    "requestPurchase": "طلب شراء",
+    "calculate": "احسب",
+    "reset": "إعادة تعيين"
+  },
+  "navigation": {
+    "cars": "السيارات",
+    "properties": "العقارات",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "English",
+    "home": "الرئيسية"
+  },
+  "cars": {
+    "title": "السيارات",
+    "filters": {
+      "make": "الماركة",
+      "model": "الموديل",
+      "year": "السنة",
+      "minPrice": "أقل سعر",
+      "maxPrice": "أعلى سعر",
+      "mileage": "المسافة المقطوعة",
+      "transmission": "ناقل الحركة",
+      "fuelType": "نوع الوقود",
+      "city": "المدينة",
+      "condition": "الحالة",
+      "color": "اللون"
+    },
+    "transmission": {
+      "manual": "يدوي",
+      "automatic": "أوتوماتيك",
+      "cvt": "CVT"
+    },
+    "fuelType": {
+      "petrol": "بنزين",
+      "diesel": "ديزل",
+      "hybrid": "هايبرد",
+      "electric": "كهربائي"
+    },
+    "specs": {
+      "year": "السنة",
+      "mileage": "المسافة المقطوعة",
+      "transmission": "ناقل الحركة",
+      "fuelType": "نوع الوقود",
+      "color": "اللون",
+      "condition": "الحالة",
+      "city": "المدينة"
+    }
+  },
+  "properties": {
+    "title": "العقارات",
+    "filters": {
+      "type": "النوع",
+      "bedrooms": "غرف النوم",
+      "bathrooms": "دورات المياه",
+      "area": "المساحة (م²)",
+      "minPrice": "أقل سعر",
+      "maxPrice": "أعلى سعر",
+      "city": "المدينة",
+      "neighborhood": "الحي",
+      "furnished": "مفروش"
+    },
+    "types": {
+      "apartment": "شقة",
+      "villa": "فيلا",
+      "house": "منزل",
+      "studio": "استوديو",
+      "duplex": "دوبلكس",
+      "penthouse": "بنتهاوس",
+      "townhouse": "تاون هاوس",
+      "shop": "محل"
+    },
+    "furnished": {
+      "furnished": "مفروش",
+      "unfurnished": "غير مفروش",
+      "semi-furnished": "نصف مفروش"
+    },
+    "specs": {
+      "type": "النوع",
+      "bedrooms": "غرف النوم",
+      "bathrooms": "دورات المياه",
+      "area": "المساحة",
+      "furnished": "الأثاث",
+      "city": "المدينة",
+      "neighborhood": "الحي"
+    }
+  },
+  "sort": {
+    "newest": "الأحدث",
+    "oldest": "الأقدم",
+    "priceAsc": "السعر: من الأقل للأعلى",
+    "priceDesc": "السعر: من الأعلى للأقل"
+  },
+  "form": {
+    "fullName": "الاسم الكامل",
+    "mobileNumber": "رقم الموبايل المصري",
+    "email": "البريد الإلكتروني (اختياري)",
+    "message": "رسالة",
+    "submit": "إرسال الطلب",
+    "required": "مطلوب",
+    "invalidPhone": "رقم الموبايل المصري غير صحيح",
+    "invalidEmail": "البريد الإلكتروني غير صحيح",
+    "requestSent": "تم إرسال طلبك بنجاح! سنتواصل معك قريباً."
+  },
+  "calculator": {
+    "title": "حاسبة الأقساط الشهرية",
+    "price": "سعر السيارة/العقار",
+    "downPayment": "المقدم (%)",
+    "interestRate": "معدل الفائدة السنوي (%)",
+    "tenure": "مدة التمويل (سنوات)",
+    "monthlyPayment": "القسط الشهري",
+    "totalAmount": "إجمالي المبلغ",
+    "totalInterest": "إجمالي الفوائد"
+  },
+  "admin": {
+    "login": "تسجيل الدخول",
+    "dashboard": "لوحة التحكم",
+    "cars": "إدارة السيارات",
+    "properties": "إدارة العقارات",
+    "requests": "طلبات الشراء",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "addNew": "إضافة جديد",
+    "markSold": "تحديد كمُباع",
+    "markAvailable": "تحديد كمتاح",
+    "contacted": "تم التواصل",
+    "pending": "في الانتظار",
+    "bulkActions": "إجراءات متعددة",
+    "selectAll": "تحديد الكل",
+    "deleteSelected": "حذف المحدد",
+    "exportCsv": "تصدير CSV",
+    "uploadImages": "رفع الصور",
+    "coverImage": "الصورة الرئيسية",
+    "dragDrop": "اسحب وأفلت الصور هنا أو انقر للاختيار"
+  },
+  "cities": {
+    "cairo": "القاهرة",
+    "alexandria": "الإسكندرية",
+    "giza": "الجيزة",
+    "sharm": "شرم الشيخ",
+    "hurghada": "الغردقة",
+    "luxor": "الأقصر",
+    "aswan": "أسوان",
+    "mansoura": "المنصورة",
+    "tanta": "طنطا",
+    "ismailia": "الإسماعيلية"
+  },
+  "makes": {
+    "toyota": "تويوتا",
+    "nissan": "نيسان",
+    "hyundai": "هيونداي",
+    "kia": "كيا",
+    "chevrolet": "شيفروليه",
+    "ford": "فورد",
+    "volkswagen": "فولكس فاجن",
+    "bmw": "بي إم دبليو",
+    "mercedes": "مرسيدس",
+    "audi": "أودي"
+  }
+}

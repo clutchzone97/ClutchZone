@@ -1,0 +1,183 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "price": "Price",
+    "currency": "EGP",
+    "egp": "EGP",
+    "new": "New",
+    "used": "Used",
+    "hot": "Hot",
+    "featured": "Featured",
+    "sold": "Sold",
+    "available": "Available",
+    "viewDetails": "View Details",
+    "contactSeller": "Contact Seller",
+    "requestPurchase": "Request Purchase",
+    "calculate": "Calculate",
+    "reset": "Reset"
+  },
+  "navigation": {
+    "cars": "Cars",
+    "properties": "Properties",
+    "language": "Language",
+    "arabic": "العربية",
+    "english": "English",
+    "home": "Home"
+  },
+  "cars": {
+    "title": "Cars",
+    "filters": {
+      "make": "Make",
+      "model": "Model",
+      "year": "Year",
+      "minPrice": "Min Price",
+      "maxPrice": "Max Price",
+      "mileage": "Mileage",
+      "transmission": "Transmission",
+      "fuelType": "Fuel Type",
+      "city": "City",
+      "condition": "Condition",
+      "color": "Color"
+    },
+    "transmission": {
+      "manual": "Manual",
+      "automatic": "Automatic",
+      "cvt": "CVT"
+    },
+    "fuelType": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "hybrid": "Hybrid",
+      "electric": "Electric"
+    },
+    "specs": {
+      "year": "Year",
+      "mileage": "Mileage",
+      "transmission": "Transmission",
+      "fuelType": "Fuel Type",
+      "color": "Color",
+      "condition": "Condition",
+      "city": "City"
+    }
+  },
+  "properties": {
+    "title": "Properties",
+    "filters": {
+      "type": "Type",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area (m²)",
+      "minPrice": "Min Price",
+      "maxPrice": "Max Price",
+      "city": "City",
+      "neighborhood": "Neighborhood",
+      "furnished": "Furnished"
+    },
+    "types": {
+      "apartment": "Apartment",
+      "villa": "Villa",
+      "house": "House",
+      "studio": "Studio",
+      "duplex": "Duplex",
+      "penthouse": "Penthouse",
+      "townhouse": "Townhouse",
+      "shop": "Shop"
+    },
+    "furnished": {
+      "furnished": "Furnished",
+      "unfurnished": "Unfurnished",
+      "semi-furnished": "Semi-furnished"
+    },
+    "specs": {
+      "type": "Type",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "area": "Area",
+      "furnished": "Furnished",
+      "city": "City",
+      "neighborhood": "Neighborhood"
+    }
+  },
+  "sort": {
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "priceAsc": "Price: Low to High",
+    "priceDesc": "Price: High to Low"
+  },
+  "form": {
+    "fullName": "Full Name",
+    "mobileNumber": "Egyptian Mobile Number",
+    "email": "Email (Optional)",
+    "message": "Message",
+    "submit": "Submit Request",
+    "required": "Required",
+    "invalidPhone": "Invalid Egyptian mobile number",
+    "invalidEmail": "Invalid email address",
+    "requestSent": "Your request has been sent successfully! We will contact you soon."
+  },
+  "calculator": {
+    "title": "Monthly Installment Calculator",
+    "price": "Car/Property Price",
+    "downPayment": "Down Payment (%)",
+    "interestRate": "Annual Interest Rate (%)",
+    "tenure": "Loan Tenure (Years)",
+    "monthlyPayment": "Monthly Payment",
+    "totalAmount": "Total Amount",
+    "totalInterest": "Total Interest"
+  },
+  "admin": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "cars": "Manage Cars",
+    "properties": "Manage Properties",
+    "requests": "Purchase Requests",
+    "settings": "Settings",
+    "logout": "Logout",
+    "addNew": "Add New",
+    "markSold": "Mark as Sold",
+    "markAvailable": "Mark as Available",
+    "contacted": "Contacted",
+    "pending": "Pending",
+    "bulkActions": "Bulk Actions",
+    "selectAll": "Select All",
+    "deleteSelected": "Delete Selected",
+    "exportCsv": "Export CSV",
+    "uploadImages": "Upload Images",
+    "coverImage": "Cover Image",
+    "dragDrop": "Drag and drop images here or click to select"
+  },
+  "cities": {
+    "cairo": "Cairo",
+    "alexandria": "Alexandria",
+    "giza": "Giza",
+    "sharm": "Sharm El Sheikh",
+    "hurghada": "Hurghada",
+    "luxor": "Luxor",
+    "aswan": "Aswan",
+    "mansoura": "Mansoura",
+    "tanta": "Tanta",
+    "ismailia": "Ismailia"
+  },
+  "makes": {
+    "toyota": "Toyota",
+    "nissan": "Nissan",
+    "hyundai": "Hyundai",
+    "kia": "Kia",
+    "chevrolet": "Chevrolet",
+    "ford": "Ford",
+    "volkswagen": "Volkswagen",
+    "bmw": "BMW",
+    "mercedes": "Mercedes",
+    "audi": "Audi"
+  }
+}

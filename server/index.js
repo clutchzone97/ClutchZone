@@ -10,7 +10,7 @@ dotenv.config();
 
 // Create Express app
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Root route (اختياري بس مهم عشان تتأكد إن السيرفر شغال)
+// Root route (مهم للتأكد إن السيرفر شغال)
 app.get('/', (req, res) => {
   res.send('🚀 ClutchZone API is running');
 });
@@ -187,7 +187,7 @@ app.put('/api/settings/:category/:key', (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
+// Start server (لازم 0.0.0.0)
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${PORT}`);
 });

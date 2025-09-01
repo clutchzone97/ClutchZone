@@ -18,7 +18,12 @@ app.use(helmet());
 app.use(express.json());
 app.use(morgan('dev'));
 
-// Routes
+// Root route (اختياري بس مهم عشان تتأكد إن السيرفر شغال)
+app.get('/', (req, res) => {
+  res.send('🚀 ClutchZone API is running');
+});
+
+// Health check route
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
@@ -35,14 +40,11 @@ app.get('/api/cars', (req, res) => {
 });
 
 app.post('/api/cars', (req, res) => {
-  // In a real app, this would save to a database
-  // For demo purposes, we'll just return success with the data
   const newCar = {
-    id: 4, // In a real app, this would be generated
+    id: 4,
     ...req.body,
     createdAt: new Date().toISOString()
   };
-  
   res.status(201).json({ car: newCar, message: 'Car created successfully' });
 });
 
@@ -78,14 +80,11 @@ app.get('/api/properties', (req, res) => {
 });
 
 app.post('/api/properties', (req, res) => {
-  // In a real app, this would save to a database
-  // For demo purposes, we'll just return success with the data
   const newProperty = {
-    id: 4, // In a real app, this would be generated
+    id: 4,
     ...req.body,
     createdAt: new Date().toISOString()
   };
-  
   res.status(201).json({ property: newProperty, message: 'Property created successfully' });
 });
 
@@ -112,8 +111,6 @@ app.get('/api/properties/:id', (req, res) => {
 // Auth API routes
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-  
-  // Simple authentication for demo purposes
   if (email === 'admin@clutchzone.com' && password === 'admin123') {
     res.status(200).json({
       user: { id: 1, name: 'Admin', email: 'admin@clutchzone.com', role: 'admin' },
@@ -192,5 +189,5 @@ app.put('/api/settings/:category/:key', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });

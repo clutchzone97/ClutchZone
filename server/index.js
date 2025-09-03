@@ -187,7 +187,7 @@ app.put('/api/settings/:category/:key', (req, res) => {
   }
 });
 
-// Start server (لازم 0.0.0.0)
+// Start server (لازم 0.0.0.0 مش localhost)
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${PORT}`);
 });

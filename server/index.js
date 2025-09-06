@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
 import settingsInstance from './models/Settings.js';
 
 // Load environment variables
@@ -18,6 +20,16 @@ app.use(helmet());
 app.use(express.json());
 app.use(morgan('dev'));
 
+// Multer (لتخزين الملفات مؤقتًا قبل رفعها)
+const upload = multer({ dest: "uploads/" });
+
+// إعداد Cloudinary من ENV variables
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 // Root route (مهم للتأكد إن السيرفر شغال)
 app.get('/', (req, res) => {
   res.send('🚀 ClutchZone API is running');
@@ -26,6 +38,23 @@ app.get('/', (req, res) => {
 // Health check route
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
+});
+
+// ✅ API لرفع الصور
+app.post('/api/upload', upload.single("image"), async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "clutchzone_uploads", // فولدر داخل Cloudinary
+    });
+
+    res.json({
+      success: true,
+      url: result.secure_url, // لينك النهائي للصورة
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Image upload failed" });
+  }
 });
 
 // Cars API routes

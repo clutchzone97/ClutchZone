@@ -8,25 +8,17 @@ import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
-import initializeParse from './config/back4app.js';
-import connectDB from './config/mongodb.js';
-import { uploadImage, deleteImage } from './config/cloudinary.js';
-import Car from './models/Car.js';
-import Property from './models/Property.js';
-import settingsInstance from './models/Settings.js';
+import initializeParse from '../config/back4app.js';
+import { uploadImage, deleteImage } from '../config/cloudinary.js';
+import Car from '../models/Car.js';
+import Property from '../models/Property.js';
+import settingsInstance from '../models/Settings.js';
 
 // Load environment variables
 dotenv.config();
 
 // Initialize Parse/Back4App connection
 initializeParse();
-
-// Connect to MongoDB if URI is provided
-connectDB();
-
-// Get __dirname equivalent for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Create Express app
 const app = express();
@@ -39,7 +31,9 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // Serve static files from client build
-const clientDistPath = path.join(__dirname, '../client/dist');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const clientDistPath = path.join(__dirname, '../../client/dist');
 if (fs.existsSync(clientDistPath)) {
   app.use(express.static(clientDistPath));
 }
@@ -57,7 +51,7 @@ app.get('/api/health', (req, res) => {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, 'uploads'));
+    cb(null, path.join(__dirname, '../uploads'));
   },
   filename: function (req, file, cb) {
     const uniqueFilename = `${uuidv4()}-${file.originalname}`;
@@ -68,7 +62,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Ensure uploads directory exists
-const uploadsDir = path.join(__dirname, 'uploads');
+const uploadsDir = path.join(__dirname, '../uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
@@ -185,12 +179,20 @@ const mockProperties = [
 // Cars API routes
 app.get('/api/cars', async (req, res) => {
   try {
+    // Parse query parameters
     const featured = req.query.featured === 'true';
     const limit = parseInt(req.query.limit) || 10;
     
-    const cars = await Car.getAll({ featured, limit });
+    // Filter mock data based on query parameters
+    let filteredCars = mockCars;
+    if (featured) {
+      filteredCars = mockCars.filter(car => car.featured);
+    }
     
-    res.status(200).json(cars);
+    // Apply limit
+    filteredCars = filteredCars.slice(0, limit);
+    
+    res.status(200).json(filteredCars);
   } catch (error) {
     console.error('Error fetching cars:', error);
     res.status(500).json({ message: 'Server error' });
@@ -222,8 +224,9 @@ app.get('/api/properties', async (req, res) => {
 
 app.post('/api/cars', async (req, res) => {
   try {
-    const car = await Car.create(req.body);
-    res.status(201).json({ car: car.toJSON(), message: 'Car created successfully' });
+    const newCar = new Car(req.body);
+    await newCar.save();
+    res.status(201).json({ car: newCar, message: 'Car created successfully' });
   } catch (error) {
     console.error('Error creating car:', error);
     res.status(500).json({ message: 'Server error' });
@@ -234,7 +237,7 @@ app.post('/api/cars', async (req, res) => {
 app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) => {
   try {
     const carId = req.params.id;
-    const car = await Car.getById(carId);
+    const car = await Car.findById(carId);
     
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
@@ -252,11 +255,10 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
     
     const uploadedImages = await Promise.all(uploadPromises);
     
-    const currentImages = car.get('images') || [];
-    car.set('images', [...currentImages, ...uploadedImages]);
+    car.images = [...car.images, ...uploadedImages];
     await car.save();
     
-    res.status(200).json({ images: car.get('images'), message: 'Images uploaded successfully' });
+    res.status(200).json({ images: car.images, message: 'Images uploaded successfully' });
   } catch (error) {
     console.error('Error uploading images:', error);
     res.status(500).json({ message: 'Server error' });
@@ -265,13 +267,13 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
 
 app.get('/api/cars/:id', async (req, res) => {
   try {
-    const car = await Car.getById(req.params.id);
+    const car = await Car.findById(req.params.id);
     
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
     
-    res.status(200).json({ car: car.toJSON() });
+    res.status(200).json({ car });
   } catch (error) {
     console.error('Error fetching car:', error);
     res.status(500).json({ message: 'Server error' });
@@ -282,23 +284,21 @@ app.get('/api/cars/:id', async (req, res) => {
 app.delete('/api/cars/:id/images/:imageId', async (req, res) => {
   try {
     const { id, imageId } = req.params;
-    const car = await Car.getById(id);
+    const car = await Car.findById(id);
     
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
     
-    const images = car.get('images') || [];
-    const imageToDelete = images.find(img => img.public_id === imageId);
+    const imageToDelete = car.images.find(img => img.public_id === imageId);
     
     if (imageToDelete) {
       await deleteImage(imageToDelete.public_id);
-      const updatedImages = images.filter(img => img.public_id !== imageId);
-      car.set('images', updatedImages);
+      car.images = car.images.filter(img => img.public_id !== imageId);
       await car.save();
     }
     
-    res.status(200).json({ message: 'Image deleted successfully', images: car.get('images') });
+    res.status(200).json({ message: 'Image deleted successfully', images: car.images });
   } catch (error) {
     console.error('Error deleting image:', error);
     res.status(500).json({ message: 'Server error' });
@@ -308,11 +308,8 @@ app.delete('/api/cars/:id/images/:imageId', async (req, res) => {
 // Properties API routes
 app.get('/api/properties', async (req, res) => {
   try {
-    const featured = req.query.featured === 'true';
-    const limit = parseInt(req.query.limit) || 10;
-    
-    const properties = await Property.getAll({ featured, limit });
-    res.status(200).json(properties);
+    const properties = await Property.find().sort({ createdAt: -1 });
+    res.status(200).json({ properties });
   } catch (error) {
     console.error('Error fetching properties:', error);
     res.status(500).json({ message: 'Server error' });
@@ -321,8 +318,9 @@ app.get('/api/properties', async (req, res) => {
 
 app.post('/api/properties', async (req, res) => {
   try {
-    const property = await Property.create(req.body);
-    res.status(201).json({ property: property.toJSON(), message: 'Property created successfully' });
+    const newProperty = new Property(req.body);
+    await newProperty.save();
+    res.status(201).json({ property: newProperty, message: 'Property created successfully' });
   } catch (error) {
     console.error('Error creating property:', error);
     res.status(500).json({ message: 'Server error' });
@@ -333,7 +331,7 @@ app.post('/api/properties', async (req, res) => {
 app.post('/api/properties/:id/images', upload.array('images', 10), async (req, res) => {
   try {
     const propertyId = req.params.id;
-    const property = await Property.getById(propertyId);
+    const property = await Property.findById(propertyId);
     
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
@@ -351,11 +349,10 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
     
     const uploadedImages = await Promise.all(uploadPromises);
     
-    const currentImages = property.get('images') || [];
-    property.set('images', [...currentImages, ...uploadedImages]);
+    property.images = [...property.images, ...uploadedImages];
     await property.save();
     
-    res.status(200).json({ images: property.get('images'), message: 'Images uploaded successfully' });
+    res.status(200).json({ images: property.images, message: 'Images uploaded successfully' });
   } catch (error) {
     console.error('Error uploading images:', error);
     res.status(500).json({ message: 'Server error' });
@@ -364,13 +361,13 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
 
 app.get('/api/properties/:id', async (req, res) => {
   try {
-    const property = await Property.getById(req.params.id);
+    const property = await Property.findById(req.params.id);
     
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
     
-    res.status(200).json({ property: property.toJSON() });
+    res.status(200).json({ property });
   } catch (error) {
     console.error('Error fetching property:', error);
     res.status(500).json({ message: 'Server error' });
@@ -381,23 +378,21 @@ app.get('/api/properties/:id', async (req, res) => {
 app.delete('/api/properties/:id/images/:imageId', async (req, res) => {
   try {
     const { id, imageId } = req.params;
-    const property = await Property.getById(id);
+    const property = await Property.findById(id);
     
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
     
-    const images = property.get('images') || [];
-    const imageToDelete = images.find(img => img.public_id === imageId);
+    const imageToDelete = property.images.find(img => img.public_id === imageId);
     
     if (imageToDelete) {
       await deleteImage(imageToDelete.public_id);
-      const updatedImages = images.filter(img => img.public_id !== imageId);
-      property.set('images', updatedImages);
+      property.images = property.images.filter(img => img.public_id !== imageId);
       await property.save();
     }
     
-    res.status(200).json({ message: 'Image deleted successfully', images: property.get('images') });
+    res.status(200).json({ message: 'Image deleted successfully', images: property.images });
   } catch (error) {
     console.error('Error deleting image:', error);
     res.status(500).json({ message: 'Server error' });
@@ -574,7 +569,7 @@ app.put('/api/settings/:category/:key', (req, res) => {
 
 // SPA fallback - serve index.html for all non-API routes
 app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, '../client/dist/index.html');
+  const indexPath = path.join(__dirname, '../../client/dist/index.html');
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
@@ -582,7 +577,14 @@ app.get('*', (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Start server (only in development)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Export handler for Vercel
+export default function handler(req, res) {
+  return app(req, res);
+}

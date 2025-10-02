@@ -37,17 +37,58 @@
 
 ## طريقة التشغيل
 
-### إعداد الخادم (Backend)
+### إعداد المشروع
 
-1. انتقل إلى مجلد الخادم:
+1. قم بتثبيت الاعتماديات لكل المشروع:
    ```
-   cd server
+   npm run setup
    ```
 
-2. قم بتثبيت الاعتماديات:
+2. قم بإنشاء ملف `.env` في مجلد `server` وملف `.env` في مجلد `client` باستخدام ملفات `.env.example` كنموذج.
+
+3. قم بتشغيل المشروع في وضع التطوير:
    ```
-   npm install
+   npm run dev
    ```
+
+## نشر المشروع
+
+### الخادم (Backend) على Render
+
+1. قم بإنشاء حساب على [Render](https://render.com/)
+2. قم بإنشاء خدمة ويب جديدة (Web Service)
+3. اختر مستودع GitHub الخاص بالمشروع
+4. قم بتكوين الخدمة كالتالي:
+   - **Name**: clutchzone-api
+   - **Runtime**: Node
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Plan**: Free
+
+5. قم بإضافة متغيرات البيئة التالية:
+   - `MONGODB_URI`: رابط قاعدة بيانات MongoDB
+   - `BACK4APP_APPLICATION_ID`: معرف تطبيق Back4App
+   - `BACK4APP_JAVASCRIPT_KEY`: مفتاح JavaScript لـ Back4App
+   - `BACK4APP_SERVER_URL`: عنوان خادم Back4App
+   - `CLOUDINARY_CLOUD_NAME`: اسم سحابة Cloudinary
+   - `CLOUDINARY_API_KEY`: مفتاح API لـ Cloudinary
+   - `CLOUDINARY_API_SECRET`: سر API لـ Cloudinary
+   - `JWT_SECRET`: مفتاح سري لتوقيع JWT
+   - `NODE_ENV`: production
+
+### الواجهة الأمامية (Frontend) على Vercel
+
+1. قم بإنشاء حساب على [Vercel](https://vercel.com/)
+2. قم بإنشاء مشروع جديد
+3. اختر مستودع GitHub الخاص بالمشروع
+4. قم بتكوين المشروع كالتالي:
+   - **Framework Preset**: Vite
+   - **Root Directory**: client
+   - **Build Command**: `npm run build`
+   - **Output Directory**: dist
+
+5. قم بإضافة متغيرات البيئة التالية:
+   - `VITE_API_URL`: عنوان API الخادم (مثال: https://clutchzone-api.onrender.com)
 
 3. قم بإنشاء ملف `.env` باستخدام المتغيرات من ملف `.env.example`:
    ```

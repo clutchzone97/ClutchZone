@@ -1,51 +1,129 @@
-import mongoose from 'mongoose';
+import { Parse } from '../config/back4app.js';
 
-const propertySchema = new mongoose.Schema({
-  type: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  location: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  area: {
-    type: Number,
-    required: true
-  },
-  price: {
-    type: Number,
-    required: true
-  },
-  description: {
-    type: String,
-    trim: true
-  },
-  features: [{
-    type: String,
-    trim: true
-  }],
-  status: {
-    type: String,
-    enum: ['available', 'sold', 'pending'],
-    default: 'available'
-  },
-  images: [{
-    url: String,
-    public_id: String
-  }],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+class Property extends Parse.Object {
+  constructor() {
+    super('Property');
   }
-}, { timestamps: true });
 
-const Property = mongoose.model('Property', propertySchema);
+  // Getters
+  get type() {
+    return this.get('type');
+  }
+
+  get location() {
+    return this.get('location');
+  }
+
+  get area() {
+    return this.get('area');
+  }
+
+  get price() {
+    return this.get('price');
+  }
+
+  get description() {
+    return this.get('description');
+  }
+
+  get features() {
+    return this.get('features') || [];
+  }
+
+  get status() {
+    return this.get('status') || 'available';
+  }
+
+  get images() {
+    return this.get('images') || [];
+  }
+
+  // Setters
+  set type(value) {
+    this.set('type', value);
+  }
+
+  set location(value) {
+    this.set('location', value);
+  }
+
+  set area(value) {
+    this.set('area', value);
+  }
+
+  set price(value) {
+    this.set('price', value);
+  }
+
+  set description(value) {
+    this.set('description', value);
+  }
+
+  set features(value) {
+    this.set('features', value);
+  }
+
+  set status(value) {
+    this.set('status', value);
+  }
+
+  set images(value) {
+    this.set('images', value);
+  }
+
+  // Static methods
+  static async findAll(limit = 100, skip = 0) {
+    const query = new Parse.Query(Property);
+    query.limit(limit);
+    query.skip(skip);
+    query.descending('createdAt');
+    return await query.find();
+  }
+
+  static async findById(id) {
+    const query = new Parse.Query(Property);
+    return await query.get(id);
+  }
+
+  static async findByStatus(status, limit = 100) {
+    const query = new Parse.Query(Property);
+    query.equalTo('status', status);
+    query.limit(limit);
+    query.descending('createdAt');
+    return await query.find();
+  }
+
+  static async findByType(type, limit = 100) {
+    const query = new Parse.Query(Property);
+    query.equalTo('type', type);
+    query.limit(limit);
+    query.descending('createdAt');
+    return await query.find();
+  }
+
+  static async search(searchTerm, limit = 100) {
+    const query = new Parse.Query(Property);
+    const typeQuery = new Parse.Query(Property);
+    const locationQuery = new Parse.Query(Property);
+    
+    typeQuery.contains('type', searchTerm);
+    locationQuery.contains('location', searchTerm);
+    
+    const mainQuery = Parse.Query.or(typeQuery, locationQuery);
+    mainQuery.limit(limit);
+    mainQuery.descending('createdAt');
+    
+    return await mainQuery.find();
+  }
+
+  static async deleteById(id) {
+    const query = new Parse.Query(Property);
+    const property = await query.get(id);
+    return await property.destroy();
+  }
+}
+
+// Register the subclass
+Parse.Object.registerSubclass('Property', Property);
 
 export default Property;

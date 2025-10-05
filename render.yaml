@@ -6,7 +6,7 @@ services:
     staticPublishPath: client/dist
     envVars:
       - key: VITE_API_URL
-        value: https://clutchzone-api.onrender.com
+        value: https://clutchzone.onrender.com
     routes:
       - type: rewrite
         source: /*

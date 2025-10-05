@@ -203,16 +203,7 @@ const AdminLogin = () => {
           </button>
         </form>
 
-        {/* Demo Credentials */}
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h3 className="text-sm font-medium text-blue-900 mb-2">
-            {language === 'ar' ? 'بيانات تجريبية:' : 'Demo Credentials:'}
-          </h3>
-          <div className="text-sm text-blue-800 space-y-1">
-            <div><strong>{language === 'ar' ? 'البريد:' : 'Email:'}</strong> admin@clutchzone.com</div>
-            <div><strong>{language === 'ar' ? 'كلمة المرور:' : 'Password:'}</strong> admin123</div>
-          </div>
-        </div>
+
 
         {/* Back to Site */}
         <div className="text-center">

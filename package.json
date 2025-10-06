@@ -12,7 +12,12 @@
     "setup": "npm install && cd client && npm install && cd ../server && npm install",
     "seed": "cd server && npm run seed"
   },
-  "keywords": ["cars", "properties", "egypt", "marketplace"],
+  "keywords": [
+    "cars",
+    "properties",
+    "egypt",
+    "marketplace"
+  ],
   "author": "ClutchZone",
   "license": "MIT",
   "devDependencies": {

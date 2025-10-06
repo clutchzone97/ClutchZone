@@ -113,6 +113,39 @@ class Car extends Parse.Object {
     const car = await query.get(id);
     return await car.destroy();
   }
+
+  // إضافة الطرق المفقودة
+  static async create(data) {
+    const car = new Car();
+    
+    // تعيين البيانات
+    Object.keys(data).forEach(key => {
+      car.set(key, data[key]);
+    });
+    
+    await car.save();
+    return car;
+  }
+
+  static async getById(id) {
+    const query = new Parse.Query(Car);
+    return await query.get(id);
+  }
+
+  static async getAll(options = {}) {
+    const { featured = false, limit = 10 } = options;
+    
+    const query = new Parse.Query(Car);
+    
+    if (featured) {
+      query.equalTo('featured', true);
+    }
+    
+    query.limit(limit);
+    query.descending('createdAt');
+    
+    return await query.find();
+  }
 }
 
 // Register the subclass

@@ -121,6 +121,39 @@ class Property extends Parse.Object {
     const property = await query.get(id);
     return await property.destroy();
   }
+
+  // إضافة الطرق المفقودة
+  static async create(data) {
+    const property = new Property();
+    
+    // تعيين البيانات
+    Object.keys(data).forEach(key => {
+      property.set(key, data[key]);
+    });
+    
+    await property.save();
+    return property;
+  }
+
+  static async getById(id) {
+    const query = new Parse.Query(Property);
+    return await query.get(id);
+  }
+
+  static async getAll(options = {}) {
+    const { featured = false, limit = 10 } = options;
+    
+    const query = new Parse.Query(Property);
+    
+    if (featured) {
+      query.equalTo('featured', true);
+    }
+    
+    query.limit(limit);
+    query.descending('createdAt');
+    
+    return await query.find();
+  }
 }
 
 // Register the subclass

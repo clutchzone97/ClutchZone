@@ -126,10 +126,15 @@ class Property extends Parse.Object {
   static async create(data) {
     const property = new Property();
     
-    // تعيين البيانات
-    Object.keys(data).forEach(key => {
-      property.set(key, data[key]);
-    });
+    // تعيين البيانات بشكل صحيح
+    if (data.type) property.set('type', data.type);
+    if (data.location) property.set('location', data.location);
+    if (data.area) property.set('area', data.area);
+    if (data.price) property.set('price', data.price);
+    if (data.description) property.set('description', data.description);
+    if (data.features) property.set('features', data.features);
+    if (data.status) property.set('status', data.status);
+    if (data.images) property.set('images', data.images);
     
     await property.save();
     return property;

@@ -118,10 +118,15 @@ class Car extends Parse.Object {
   static async create(data) {
     const car = new Car();
     
-    // تعيين البيانات
-    Object.keys(data).forEach(key => {
-      car.set(key, data[key]);
-    });
+    // تعيين البيانات بشكل صحيح
+    if (data.make) car.set('make', data.make);
+    if (data.model) car.set('model', data.model);
+    if (data.year) car.set('year', data.year);
+    if (data.price) car.set('price', data.price);
+    if (data.description) car.set('description', data.description);
+    if (data.features) car.set('features', data.features);
+    if (data.status) car.set('status', data.status);
+    if (data.images) car.set('images', data.images);
     
     await car.save();
     return car;

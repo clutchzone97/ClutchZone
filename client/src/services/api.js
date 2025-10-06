@@ -38,48 +38,48 @@ api.interceptors.response.use(
 
 // Auth API
 export const authAPI = {
-  login: (credentials) => api.post('/auth/login', credentials),
+  login: (credentials) => api.post('/api/auth/login', credentials),
 }
 
 // Cars API
 export const carsAPI = {
-  getAll: (params) => api.get('/cars', { params }),
-  getById: (id) => api.get(`/cars/${id}`),
-  create: (data) => api.post('/cars', data),
-  update: (id, data) => api.put(`/cars/${id}`, data),
-  delete: (id) => api.delete(`/cars/${id}`),
-  updateStatus: (id, status) => api.patch(`/cars/${id}/status`, { status }),
-  uploadImages: (id, formData) => api.post(`/cars/${id}/images`, formData, {
+  getAll: (params) => api.get('/api/cars', { params }),
+  getById: (id) => api.get(`/api/cars/${id}`),
+  create: (data) => api.post('/api/cars', data),
+  update: (id, data) => api.put(`/api/cars/${id}`, data),
+  delete: (id) => api.delete(`/api/cars/${id}`),
+  updateStatus: (id, status) => api.patch(`/api/cars/${id}/status`, { status }),
+  uploadImages: (id, formData) => api.post(`/api/cars/${id}/images`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
 }
 
 // Properties API
 export const propertiesAPI = {
-  getAll: (params) => api.get('/properties', { params }),
-  getById: (id) => api.get(`/properties/${id}`),
-  create: (data) => api.post('/properties', data),
-  update: (id, data) => api.put(`/properties/${id}`, data),
-  delete: (id) => api.delete(`/properties/${id}`),
-  updateStatus: (id, status) => api.patch(`/properties/${id}/status`, { status }),
-  uploadImages: (id, formData) => api.post(`/properties/${id}/images`, formData, {
+  getAll: (params) => api.get('/api/properties', { params }),
+  getById: (id) => api.get(`/api/properties/${id}`),
+  create: (data) => api.post('/api/properties', data),
+  update: (id, data) => api.put(`/api/properties/${id}`, data),
+  delete: (id) => api.delete(`/api/properties/${id}`),
+  updateStatus: (id, status) => api.patch(`/api/properties/${id}/status`, { status }),
+  uploadImages: (id, formData) => api.post(`/api/properties/${id}/images`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
 }
 
 // Purchase Requests API
 export const purchaseRequestsAPI = {
-  create: (data) => api.post('/requests', data),
-  getAll: (params) => api.get('/requests', { params }),
-  updateStatus: (id, status) => api.patch(`/requests/${id}`, { status }),
-  delete: (id) => api.delete(`/requests/${id}`),
-  exportCsv: () => api.get('/requests/export', { responseType: 'blob' }),
+  create: (data) => api.post('/api/requests', data),
+  getAll: (params) => api.get('/api/requests', { params }),
+  updateStatus: (id, status) => api.patch(`/api/requests/${id}`, { status }),
+  delete: (id) => api.delete(`/api/requests/${id}`),
+  exportCsv: () => api.get('/api/requests/export', { responseType: 'blob' }),
 }
 
 // Dashboard API
 export const dashboardAPI = {
-  getStats: () => api.get('/dashboard/stats'),
-  getRecentRequests: (params) => api.get('/dashboard/recent-requests', { params }),
+  getStats: () => api.get('/api/dashboard/stats'),
+  getRecentRequests: (params) => api.get('/api/dashboard/recent-requests', { params }),
 }
 
 // Alias for backward compatibility

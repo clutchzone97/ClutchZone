@@ -11,7 +11,8 @@ const AddProperty = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    type: 'Apartment',
+    title: '',
+    category: 'apartment',
     location: '',
     area: '',
     price: '',
@@ -110,7 +111,8 @@ const AddProperty = () => {
       
       // Reset form after successful submission
       setFormData({
-        type: 'Apartment',
+        title: '',
+        category: 'apartment',
         location: '',
         area: '',
         price: '',
@@ -173,29 +175,46 @@ const AddProperty = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Type */}
+              {/* Title */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {language === 'ar' ? 'النوع' : 'Type'}
+                  {language === 'ar' ? 'العنوان' : 'Title'} *
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={language === 'ar' ? 'أدخل عنوان العقار' : 'Enter property title'}
+                />
+              </div>
+
+              {/* Category */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {language === 'ar' ? 'النوع' : 'Category'} *
                 </label>
                 <select
-                  name="type"
-                  value={formData.type}
+                  name="category"
+                  value={formData.category}
                   onChange={handleChange}
+                  required
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                 >
-                  <option value="Apartment">{language === 'ar' ? 'شقة' : 'Apartment'}</option>
-                  <option value="Villa">{language === 'ar' ? 'فيلا' : 'Villa'}</option>
-                  <option value="House">{language === 'ar' ? 'منزل' : 'House'}</option>
-                  <option value="Land">{language === 'ar' ? 'أرض' : 'Land'}</option>
-                  <option value="Commercial">{language === 'ar' ? 'تجاري' : 'Commercial'}</option>
+                  <option value="apartment">{language === 'ar' ? 'شقة' : 'Apartment'}</option>
+                  <option value="villa">{language === 'ar' ? 'فيلا' : 'Villa'}</option>
+                  <option value="store">{language === 'ar' ? 'متجر' : 'Store'}</option>
+                  <option value="land">{language === 'ar' ? 'أرض' : 'Land'}</option>
+                  <option value="office">{language === 'ar' ? 'مكتب' : 'Office'}</option>
                 </select>
               </div>
 
               {/* Location */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {language === 'ar' ? 'الموقع' : 'Location'}
+                  {language === 'ar' ? 'الموقع' : 'Location'} *
                 </label>
                 <input
                   type="text"
@@ -204,6 +223,24 @@ const AddProperty = () => {
                   onChange={handleChange}
                   required
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={language === 'ar' ? 'أدخل موقع العقار' : 'Enter property location'}
+                />
+              </div>
+
+              {/* Price */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {language === 'ar' ? 'السعر' : 'Price'} *
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  required
+                  min="0"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={language === 'ar' ? 'أدخل سعر العقار' : 'Enter property price'}
                 />
               </div>
 
@@ -217,25 +254,9 @@ const AddProperty = () => {
                   name="area"
                   value={formData.area}
                   onChange={handleChange}
-                  required
                   min="1"
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-
-              {/* Price */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {language === 'ar' ? 'السعر' : 'Price'}
-                </label>
-                <input
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                  required
-                  min="0"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  placeholder={language === 'ar' ? 'أدخل مساحة العقار' : 'Enter property area'}
                 />
               </div>
 

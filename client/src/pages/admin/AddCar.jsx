@@ -97,13 +97,13 @@ const AddCar = () => {
       const response = await carsAPI.create(cleanedFormData);
       
       // Handle image upload if there are images and we have a car ID
-      if (images.length > 0 && response.data.car._id) {
+      if (images.length > 0 && response.data._id) {
         const formDataImages = new FormData();
         images.forEach(image => {
           formDataImages.append('images', image);
         });
         
-        await carsAPI.uploadImages(response.data.car._id, formDataImages);
+        await carsAPI.uploadImages(response.data._id, formDataImages);
       }
 
       setSuccess(language === 'ar' ? 'تم إضافة السيارة بنجاح' : 'Car added successfully');

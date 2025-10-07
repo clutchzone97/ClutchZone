@@ -98,13 +98,13 @@ const AddProperty = () => {
       const response = await propertiesAPI.create(cleanedFormData);
       
       // Handle image upload if there are images and we have a property ID
-      if (images.length > 0 && response.data.property._id) {
+      if (images.length > 0 && response.data._id) {
         const formDataImages = new FormData();
         images.forEach(image => {
           formDataImages.append('images', image);
         });
         
-        await propertiesAPI.uploadImages(response.data.property._id, formDataImages);
+        await propertiesAPI.uploadImages(response.data._id, formDataImages);
       }
 
       setSuccess(language === 'ar' ? 'تم إضافة العقار بنجاح' : 'Property added successfully');

@@ -420,7 +420,7 @@ app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
   
   // Simple authentication for demo purposes
-  if (email === 'admin@clutchzone.com' && password === 'admin123') {
+  if (email === 'admin@clutchzone.com' && password === 'maxstorm@012') {
     res.status(200).json({
       user: { id: 1, name: 'Admin', email: 'admin@clutchzone.com', role: 'admin' },
       token: 'demo-jwt-token'

@@ -37,21 +37,26 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // In-memory storage for development/testing when MongoDB is not available
-let inMemoryProperties = [];
-let inMemoryCars = [];
+export let inMemoryProperties = [];
+export let inMemoryCars = [];
 let isMongoConnected = false;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("✅ Connected to MongoDB");
-    isMongoConnected = true;
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
-    console.log("🔄 Using in-memory storage for development");
-    isMongoConnected = false;
-  });
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log("✅ Connected to MongoDB");
+      isMongoConnected = true;
+    })
+    .catch((err) => {
+      console.error("❌ MongoDB connection error:", err);
+      console.log("🔄 Using in-memory storage for development");
+      isMongoConnected = false;
+    });
+} else {
+  console.log("🔄 Using in-memory storage for development");
+  isMongoConnected = false;
+}
 
 // Cars API routes
 app.get("/api/cars", async (req, res) => {
@@ -366,8 +371,16 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
 // Dashboard stats
 app.get("/api/dashboard/stats", async (req, res) => {
   try {
-    const totalCars = await Car.countDocuments();
-    const totalProperties = await Property.countDocuments();
+    let totalCars;
+    let totalProperties;
+
+    if (isMongoConnected) {
+      totalCars = await Car.countDocuments();
+      totalProperties = await Property.countDocuments();
+    } else {
+      totalCars = inMemoryCars.length;
+      totalProperties = inMemoryProperties.length;
+    }
     
     res.status(200).json({
       totalCars,
@@ -414,4 +427,8 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+}
+
+export default app;

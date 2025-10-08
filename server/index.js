@@ -172,13 +172,22 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
       }
 
       const uploadPromises = req.files.map(async (file) => {
-        const result = await uploadImage(file.path);
-        // Delete the local file after upload
-        fs.unlinkSync(file.path);
-        return {
-          url: result.secure_url,
-          public_id: result.public_id
-        };
+        try {
+          const result = await uploadImage(file.path);
+          // Delete the local file after upload
+          fs.unlinkSync(file.path);
+          return {
+            url: result.secure_url,
+            public_id: result.public_id
+          };
+        } catch (error) {
+          console.error('Cloudinary upload failed, using local storage:', error);
+          // Fallback to local storage if Cloudinary fails
+          return {
+            url: `${req.protocol}://${req.get('host')}/uploads/${file.filename}`,
+            public_id: `local_${Date.now()}_${Math.random()}`
+          };
+        }
       });
 
       const uploadedImages = await Promise.all(uploadPromises);

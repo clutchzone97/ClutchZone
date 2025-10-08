@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
 
 const carSchema = new mongoose.Schema({
-  brand: { type: String, required: true },
+  make: { type: String, required: true },
   model: { type: String, required: true },
   price: { type: Number, required: true },
   year: { type: Number },
   images: [String],
   description: { type: String },
+  features: [String],
+  status: { type: String, default: 'available' },
   createdAt: { type: Date, default: Date.now },
 });
 

@@ -11,7 +11,7 @@ const AddCar = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    make: '',
+    brand: '',
     model: '',
     year: new Date().getFullYear(),
     price: '',
@@ -110,7 +110,7 @@ const AddCar = () => {
       
       // Reset form after successful submission
       setFormData({
-        make: '',
+        brand: '',
         model: '',
         year: new Date().getFullYear(),
         price: '',
@@ -173,15 +173,15 @@ const AddCar = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Make */}
+              {/* Brand */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {language === 'ar' ? 'الشركة المصنعة' : 'Make'}
+                  {language === 'ar' ? 'الماركة' : 'Brand'}
                 </label>
                 <input
                   type="text"
-                  name="make"
-                  value={formData.make}
+                  name="brand"
+                  value={formData.brand}
                   onChange={handleChange}
                   required
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"

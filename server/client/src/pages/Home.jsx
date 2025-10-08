@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import SEO from '../components/SEO'
 import { useQuery } from '@tanstack/react-query'
 import { Car, Home as HomeIcon, ArrowLeft, ArrowRight } from 'lucide-react'
 import { carsAPI, propertiesAPI } from '../services/api'
@@ -26,6 +27,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title={t('home.seo.title')}
+        description={t('home.seo.description')}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="container mx-auto px-4 text-center">

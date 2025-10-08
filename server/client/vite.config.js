@@ -8,13 +8,13 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: process.env.NODE_ENV === 'production' ? 'https://clutchzone-pi.vercel.app' : 'http://localhost:5000',
-        changeOrigin: true
+        target: 'http://localhost:10000', // Corrected backend port
+        changeOrigin: true,
       }
     }
   },
   build: {
-    outDir: 'dist',
+    outDir: 'build', // Corrected to match server expectation
     sourcemap: true
   }
 })

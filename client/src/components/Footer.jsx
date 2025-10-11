@@ -45,11 +45,6 @@ const Footer = () => {
                   {t('navigation.properties')}
                 </Link>
               </li>
-              <li>
-                <Link to="/admin" className="text-gray-300 hover:text-white transition-colors">
-                  {language === 'ar' ? 'لوحة التحكم' : 'Admin Dashboard'}
-                </Link>
-              </li>
             </ul>
           </div>
 

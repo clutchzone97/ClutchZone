@@ -191,7 +191,7 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
-      
+
       car.images = [...car.images, ...uploadedImages];
       await car.save();
 
@@ -202,15 +202,15 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
         url: `http://localhost:10000/uploads/${file.filename}`,
         public_id: `mock_${Date.now()}_${index}`
       }));
-      
+
       const car = inMemoryCars.find(c => c._id === req.params.id);
       if (!car) {
         return res.status(404).json({ message: 'Car not found' });
       }
-      
+
       if (!car.images) car.images = [];
       car.images = [...car.images, ...mockImages];
-      
+
       res.status(200).json({ images: car.images, message: 'Images uploaded successfully' });
     }
   } catch (error) {
@@ -344,7 +344,7 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
       });
 
       const uploadedImages = await Promise.all(uploadPromises);
-      
+
       property.images = [...property.images, ...uploadedImages];
       await property.save();
 
@@ -355,15 +355,15 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
         url: `http://localhost:10000/uploads/${file.filename}`,
         public_id: `mock_${Date.now()}_${index}`
       }));
-      
+
       const property = inMemoryProperties.find(p => p._id === req.params.id);
       if (!property) {
         return res.status(404).json({ message: 'Property not found' });
       }
-      
+
       if (!property.images) property.images = [];
       property.images = [...property.images, ...mockImages];
-      
+
       res.status(200).json({ images: property.images, message: 'Images uploaded successfully' });
     }
   } catch (error) {
@@ -377,7 +377,7 @@ app.get("/api/dashboard/stats", async (req, res) => {
   try {
     const totalCars = await Car.countDocuments();
     const totalProperties = await Property.countDocuments();
-    
+
     res.status(200).json({
       totalCars,
       totalProperties,
@@ -403,7 +403,7 @@ app.get("/api/dashboard/recent-requests", async (req, res) => {
 // Auth API routes
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-  
+
   // Simple authentication for demo purposes
   if (email === 'admin@clutchzone.com' && password === 'maxstorm@012') {
     res.status(200).json({

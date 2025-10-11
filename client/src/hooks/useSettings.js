@@ -10,7 +10,7 @@ const settingsAPI = {
     if (!response.ok) throw new Error('Failed to fetch settings')
     return response.json()
   },
-  
+
   updateLogo: async (logoData) => {
     const response = await fetch(`${API_BASE_URL}/settings/logo`, {
       method: 'PUT',
@@ -20,7 +20,7 @@ const settingsAPI = {
     if (!response.ok) throw new Error('Failed to update logo')
     return response.json()
   },
-  
+
   updateSocialMedia: async (socialData) => {
     const response = await fetch(`${API_BASE_URL}/settings/social-media`, {
       method: 'PUT',
@@ -30,7 +30,7 @@ const settingsAPI = {
     if (!response.ok) throw new Error('Failed to update social media')
     return response.json()
   },
-  
+
   updateTheme: async (themeData) => {
     const response = await fetch(`${API_BASE_URL}/settings/theme`, {
       method: 'PUT',
@@ -40,7 +40,7 @@ const settingsAPI = {
     if (!response.ok) throw new Error('Failed to update theme')
     return response.json()
   },
-  
+
   updateContact: async (contactData) => {
     const response = await fetch(`${API_BASE_URL}/settings/contact`, {
       method: 'PUT',
@@ -50,7 +50,7 @@ const settingsAPI = {
     if (!response.ok) throw new Error('Failed to update contact')
     return response.json()
   },
-  
+
   updateSiteInfo: async (siteData) => {
     const response = await fetch(`${API_BASE_URL}/settings/site-info`, {
       method: 'PUT',
@@ -64,7 +64,7 @@ const settingsAPI = {
 
 export const useSettings = () => {
   const queryClient = useQueryClient()
-  
+
   // Get settings query
   const {
     data: settings,
@@ -146,14 +146,14 @@ export const useSettings = () => {
     settings: settings?.settings,
     isLoading,
     error,
-    
+
     // Mutations
     updateLogo: updateLogoMutation.mutate,
     updateSocialMedia: updateSocialMutation.mutate,
     updateTheme: updateThemeMutation.mutate,
     updateContact: updateContactMutation.mutate,
     updateSiteInfo: updateSiteInfoMutation.mutate,
-    
+
     // Loading states
     isUpdatingLogo: updateLogoMutation.isPending,
     isUpdatingSocial: updateSocialMutation.isPending,

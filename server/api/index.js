@@ -182,16 +182,16 @@ app.get('/api/cars', async (req, res) => {
     // Parse query parameters
     const featured = req.query.featured === 'true';
     const limit = parseInt(req.query.limit) || 10;
-    
+
     // Filter mock data based on query parameters
     let filteredCars = mockCars;
     if (featured) {
       filteredCars = mockCars.filter(car => car.featured);
     }
-    
+
     // Apply limit
     filteredCars = filteredCars.slice(0, limit);
-    
+
     res.status(200).json(filteredCars);
   } catch (error) {
     console.error('Error fetching cars:', error);
@@ -205,16 +205,16 @@ app.get('/api/properties', async (req, res) => {
     // Parse query parameters
     const featured = req.query.featured === 'true';
     const limit = parseInt(req.query.limit) || 10;
-    
+
     // Filter mock data based on query parameters
     let filteredProperties = mockProperties;
     if (featured) {
       filteredProperties = mockProperties.filter(property => property.featured);
     }
-    
+
     // Apply limit
     filteredProperties = filteredProperties.slice(0, limit);
-    
+
     res.status(200).json(filteredProperties);
   } catch (error) {
     console.error('Error fetching properties:', error);
@@ -238,11 +238,11 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
   try {
     const carId = req.params.id;
     const car = await Car.findById(carId);
-    
+
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
-    
+
     const uploadPromises = req.files.map(async (file) => {
       const result = await uploadImage(file.path);
       // Delete the local file after upload
@@ -252,12 +252,12 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
         public_id: result.public_id
       };
     });
-    
+
     const uploadedImages = await Promise.all(uploadPromises);
-    
+
     car.images = [...car.images, ...uploadedImages];
     await car.save();
-    
+
     res.status(200).json({ images: car.images, message: 'Images uploaded successfully' });
   } catch (error) {
     console.error('Error uploading images:', error);
@@ -268,11 +268,11 @@ app.post('/api/cars/:id/images', upload.array('images', 10), async (req, res) =>
 app.get('/api/cars/:id', async (req, res) => {
   try {
     const car = await Car.findById(req.params.id);
-    
+
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
-    
+
     res.status(200).json({ car });
   } catch (error) {
     console.error('Error fetching car:', error);
@@ -285,19 +285,19 @@ app.delete('/api/cars/:id/images/:imageId', async (req, res) => {
   try {
     const { id, imageId } = req.params;
     const car = await Car.findById(id);
-    
+
     if (!car) {
       return res.status(404).json({ message: 'Car not found' });
     }
-    
+
     const imageToDelete = car.images.find(img => img.public_id === imageId);
-    
+
     if (imageToDelete) {
       await deleteImage(imageToDelete.public_id);
       car.images = car.images.filter(img => img.public_id !== imageId);
       await car.save();
     }
-    
+
     res.status(200).json({ message: 'Image deleted successfully', images: car.images });
   } catch (error) {
     console.error('Error deleting image:', error);
@@ -332,11 +332,11 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
   try {
     const propertyId = req.params.id;
     const property = await Property.findById(propertyId);
-    
+
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
-    
+
     const uploadPromises = req.files.map(async (file) => {
       const result = await uploadImage(file.path);
       // Delete the local file after upload
@@ -346,12 +346,12 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
         public_id: result.public_id
       };
     });
-    
+
     const uploadedImages = await Promise.all(uploadPromises);
-    
+
     property.images = [...property.images, ...uploadedImages];
     await property.save();
-    
+
     res.status(200).json({ images: property.images, message: 'Images uploaded successfully' });
   } catch (error) {
     console.error('Error uploading images:', error);
@@ -362,11 +362,11 @@ app.post('/api/properties/:id/images', upload.array('images', 10), async (req, r
 app.get('/api/properties/:id', async (req, res) => {
   try {
     const property = await Property.findById(req.params.id);
-    
+
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
-    
+
     res.status(200).json({ property });
   } catch (error) {
     console.error('Error fetching property:', error);
@@ -379,19 +379,19 @@ app.delete('/api/properties/:id/images/:imageId', async (req, res) => {
   try {
     const { id, imageId } = req.params;
     const property = await Property.findById(id);
-    
+
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
-    
+
     const imageToDelete = property.images.find(img => img.public_id === imageId);
-    
+
     if (imageToDelete) {
       await deleteImage(imageToDelete.public_id);
       property.images = property.images.filter(img => img.public_id !== imageId);
       await property.save();
     }
-    
+
     res.status(200).json({ message: 'Image deleted successfully', images: property.images });
   } catch (error) {
     console.error('Error deleting image:', error);
@@ -418,7 +418,7 @@ app.get('/api/test', (req, res) => {
 // Auth API routes
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-  
+
   // Simple authentication for demo purposes
   if (email === 'admin@clutchzone.com' && password === 'maxstorm@012') {
     res.status(200).json({
@@ -444,7 +444,7 @@ app.get('/api/dashboard/stats', (req, res) => {
         completedSales: 3
       }
     };
-    
+
     res.status(200).json(stats);
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);
@@ -493,7 +493,7 @@ app.get('/api/dashboard/recent-requests', (req, res) => {
         createdAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000) // 10 days ago
       }
     ];
-    
+
     res.status(200).json({ requests: recentRequests, total: recentRequests.length });
   } catch (error) {
     console.error('Error fetching recent requests:', error);

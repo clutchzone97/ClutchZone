@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Upload, Plus, Trash2 } from 'lucide-react';
 import { carsAPI } from '../../services/api';
 import { useLanguageStore } from '../../stores/languageStore';
@@ -9,6 +10,7 @@ const AddCar = () => {
   const { t } = useTranslation();
   const { language } = useLanguageStore();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     make: '',
@@ -60,7 +62,7 @@ const AddCar = () => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages(prev => [...prev, ...files]);
-    
+
     // Create preview URLs
     const newPreviewImages = files.map(file => URL.createObjectURL(file));
     setPreviewImages(prev => [...prev, ...newPreviewImages]);
@@ -69,13 +71,13 @@ const AddCar = () => {
   const removeImage = (index) => {
     const updatedImages = [...images];
     const updatedPreviews = [...previewImages];
-    
+
     // Revoke the object URL to avoid memory leaks
     URL.revokeObjectURL(updatedPreviews[index]);
-    
+
     updatedImages.splice(index, 1);
     updatedPreviews.splice(index, 1);
-    
+
     setImages(updatedImages);
     setPreviewImages(updatedPreviews);
   };
@@ -95,19 +97,20 @@ const AddCar = () => {
 
       // Create car
       const response = await carsAPI.create(cleanedFormData);
-      
+
       // Handle image upload if there are images and we have a car ID
       if (images.length > 0 && response.data._id) {
         const formDataImages = new FormData();
         images.forEach(image => {
           formDataImages.append('images', image);
         });
-        
+
         await carsAPI.uploadImages(response.data._id, formDataImages);
       }
 
       setSuccess(language === 'ar' ? 'تم إضافة السيارة بنجاح' : 'Car added successfully');
-      
+      queryClient.invalidateQueries(['cars']);
+
       // Reset form after successful submission
       setFormData({
         make: '',
@@ -120,7 +123,7 @@ const AddCar = () => {
       });
       setImages([]);
       setPreviewImages([]);
-      
+
       // Redirect to dashboard after a short delay
       setTimeout(() => {
         navigate('/admin/dashboard');
@@ -139,8 +142,8 @@ const AddCar = () => {
       <div className="bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center">
-            <button 
-              onClick={() => navigate('/admin/dashboard')} 
+            <button
+              onClick={() => navigate('/admin/dashboard')}
               className="mr-4 p-2 rounded-full hover:bg-gray-100"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -164,7 +167,7 @@ const AddCar = () => {
               {error}
             </div>
           )}
-          
+
           {success && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-600">
               {success}
@@ -273,7 +276,7 @@ const AddCar = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {language === 'ar' ? 'المميزات' : 'Features'}
               </label>
-              
+
               {formData.features.map((feature, index) => (
                 <div key={index} className="flex mb-2">
                   <input
@@ -294,7 +297,7 @@ const AddCar = () => {
                   )}
                 </div>
               ))}
-              
+
               <button
                 type="button"
                 onClick={addFeature}
@@ -310,7 +313,7 @@ const AddCar = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {language === 'ar' ? 'الصور' : 'Images'}
               </label>
-              
+
               <div className="flex flex-wrap gap-4 mb-4">
                 {previewImages.map((src, index) => (
                   <div key={index} className="relative w-24 h-24 border rounded-lg overflow-hidden">
@@ -324,7 +327,7 @@ const AddCar = () => {
                     </button>
                   </div>
                 ))}
-                
+
                 <label className="w-24 h-24 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                   <Upload className="w-6 h-6 text-gray-400" />
                   <span className="text-xs text-gray-500 mt-1">{language === 'ar' ? 'إضافة' : 'Add'}</span>
@@ -337,7 +340,7 @@ const AddCar = () => {
                   />
                 </label>
               </div>
-              
+
               <p className="text-xs text-gray-500">
                 {language === 'ar' ? 'يمكنك تحميل صور متعددة. الحد الأقصى 5 ميجابايت لكل صورة.' : 'You can upload multiple images. Maximum 5MB per image.'}
               </p>

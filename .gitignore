@@ -8,9 +8,25 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+server/node_modules/
 dist
 dist-ssr
+build/
 *.local
+.env
+.env.local
+.env.*
+server/.env
+server/.env.local
+server/.env.*
+
+# Sensitive files
+*.key
+*.pem
+*.secret
+*.token
+.trae/
+.vercel/
 .env
 .env.*
 server/.env
@@ -22,7 +38,7 @@ server/.env.*
 .pnp.*
 
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
 .idea
 .DS_Store

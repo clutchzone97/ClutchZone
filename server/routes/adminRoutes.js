@@ -17,9 +17,12 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "كلمة المرور غير صحيحة" });
     }
 
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ message: "مشكلة إعدادات الخادم: JWT_SECRET غير مضبوط" });
+    }
     const token = jwt.sign(
       { id: admin._id, email: admin.email },
-      process.env.JWT_SECRET || "DEFAULT_SECRET_KEY",
+      process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 

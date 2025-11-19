@@ -64,6 +64,11 @@ app.use("/api/admins", adminRoutes);
 app.use("/api/settings", settingsRoutes);
 app.use("/api/upload", uploadRoutes);
 
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({ ok: true });
+});
+
 // ✅ التعامل مع الأخطاء
 app.use(errorHandler);
 

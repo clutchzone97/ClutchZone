@@ -1,5 +1,6 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
+import WakeServerOverlay from "../components/ui/WakeServerOverlay";
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import CarCard from '../components/listings/CarCard';
@@ -46,6 +47,7 @@ const HomePage: React.FC = () => {
   }, []);
   return (
     <div className="bg-light">
+      <WakeServerOverlay />
       <Header />
       
       {/* Hero Section */}

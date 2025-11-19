@@ -53,7 +53,14 @@ async function ensureDefaultAdmin() {
 await ensureDefaultAdmin();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://clutch-zone.vercel.app",
+    "http://localhost:3000",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 app.use(express.json());
 
 // ✅ المسارات (Routes)

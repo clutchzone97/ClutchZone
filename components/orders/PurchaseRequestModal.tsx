@@ -36,7 +36,7 @@ const PurchaseRequestModal: React.FC<Props> = ({ open, onClose, productType, pro
       setName('');
       setPhone('');
       setMessage('');
-      setTimeout(onClose, 1200);
+      setTimeout(onClose, 3000);
     } catch {
       setResult({ type: 'error', text: 'فشل إرسال الطلب، حاول مرة أخرى' });
     } finally {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import api from '../../utils/api';
+import { fireConfetti } from '../../utils/confetti';
 
 interface Props {
   open: boolean;
@@ -31,6 +32,7 @@ const PurchaseRequestModal: React.FC<Props> = ({ open, onClose, productType, pro
       } catch {}
       await api.post('/orders', { name, phone, message, productType, productId, priceAtOrder });
       setResult({ type: 'success', text: 'تم إرسال طلب الشراء بنجاح' });
+      fireConfetti(1500);
       setName('');
       setPhone('');
       setMessage('');

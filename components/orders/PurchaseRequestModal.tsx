@@ -55,7 +55,12 @@ const PurchaseRequestModal: React.FC<Props> = ({ open, onClose, productType, pro
           <input className="w-full border p-2 rounded" placeholder="رقم الهاتف" value={phone} onChange={e=>setPhone(e.target.value)} />
           <textarea className="w-full border p-2 rounded" placeholder="ملاحظات (اختياري)" value={message} onChange={e=>setMessage(e.target.value)} />
           {result && (
-            <div className={`px-3 py-2 rounded ${result.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>{result.text}</div>
+            <div className={`px-3 py-2 rounded ${result.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+              {result.text}
+              {result.type === 'success' && (
+                <p className="text-sm text-gray-600 mt-2">سوف يتم التواصل معك خلال 24 ساعة عمل.</p>
+              )}
+            </div>
           )}
           <div className="flex justify-between items-center">
             <button type="button" onClick={onClose} className="px-4 py-2 rounded bg-gray-200">إلغاء</button>

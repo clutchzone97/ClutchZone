@@ -53,11 +53,17 @@ async function ensureDefaultAdmin() {
 await ensureDefaultAdmin();
 
 const app = express();
+const allowedOrigins = [
+  "https://www.clutchzone.co",
+  "https://clutch-zone.vercel.app",
+  "http://localhost:3000",
+];
 app.use(cors({
-  origin: [
-    "https://clutch-zone.vercel.app",
-    "http://localhost:3000",
-  ],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error("Not allowed by CORS"));
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));

@@ -10,18 +10,17 @@ const LanguageSwitcher: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-2 text-sm">
+    <div className="inline-flex items-center rounded-full bg-white/10 border border-white/20 text-xs overflow-hidden">
       <button
         onClick={() => setLang('ar')}
-        className={`px-2 py-1 rounded ${current === 'ar' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700'}`}
+        className={`px-3 py-1 transition ${current === 'ar' ? 'bg-white text-black font-semibold' : 'text-white/80 hover:bg-white/10'}`}
         aria-label="تغيير اللغة إلى العربية"
       >
         AR
       </button>
-      <span className="text-gray-400">|</span>
       <button
         onClick={() => setLang('en')}
-        className={`px-2 py-1 rounded ${current === 'en' ? 'bg-secondary text-white' : 'bg-gray-100 text-gray-700'}`}
+        className={`px-3 py-1 transition ${current === 'en' ? 'bg-white text-black font-semibold' : 'text-white/80 hover:bg-white/10'}`}
         aria-label="Change language to English"
       >
         EN

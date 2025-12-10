@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CarouselDots from './CarouselDots';
 
 interface Props {
   images: string[];
@@ -31,10 +32,8 @@ const HeroSlider: React.FC<Props> = ({ images, heightClass = 'h-screen', interva
       <div className="relative z-10 h-full">
         {children}
       </div>
-      <div className="absolute bottom-6 right-6 flex space-x-reverse space-x-2 z-10">
-        {images && images.map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)} className={`w-2.5 h-2.5 rounded-full ${i === current ? 'bg-white' : 'bg-gray-400'} opacity-80`}></button>
-        ))}
+      <div className="pointer-events-none absolute inset-x-0 bottom-3 md:bottom-5 z-10">
+        <CarouselDots total={images?.length || 0} activeIndex={current} />
       </div>
     </div>
   );

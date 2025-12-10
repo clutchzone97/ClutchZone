@@ -71,7 +71,7 @@ const CarsPage: React.FC = () => {
       <Header />
       
       <HeroSlider images={slides} heightClass="h-[40vh]" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
-        <div className="flex flex-col justify-center items-center text-center px-4 h-full">
+        <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-24 md:pt-28">
           <h1 className="text-4xl md:text-5xl font-bold">{t('cars_available_title')}</h1>
           <p className="text-lg mt-2">{t('cars_available_subtitle')}</p>
         </div>

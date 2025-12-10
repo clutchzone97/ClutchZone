@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
 
       {/* Hero Section */}
       <HeroSlider images={slides} heightClass="h-screen" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
-        <div className="flex flex-col justify-center items-center text-center px-4 h-full">
+        <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-24 md:pt-28">
           <h1
             className="text-4xl md:text-6xl font-bold mb-4"
             style={{

@@ -9,8 +9,11 @@ import { Link } from 'react-router-dom';
 import api from '../utils/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
+import { useTranslation } from 'react-i18next';
+import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
   const [featuredCars, setFeaturedCars] = useState<any[]>([]);
   const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
   const { settings } = useSiteSettings();
@@ -30,6 +33,11 @@ const HomePage: React.FC = () => {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
+    setPageSEO({
+      title: 'Clutch Zone | سوق السيارات والعقارات في مصر',
+      description: 'منصة مصرية موثوقة لشراء وبيع السيارات والعقارات. اكتشف أفضل العروض بأسعار تنافسية وخدمة دعم متميزة للمستخدمين في مصر.',
+      canonicalUrl: canonicalForHashRouter('https://www.clutchzone.co')
+    });
     if (!slides.length) return;
     const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 3000);
     return () => clearInterval(t);
@@ -64,7 +72,7 @@ const HomePage: React.FC = () => {
               WebkitTextStroke: `${(settings.heroTitleStrokeWidth ?? settings.heroStrokeWidth ?? 0)}px ${(settings.heroTitleStrokeColor ?? settings.heroStrokeColor) || '#1D4ED8'}`,
             }}
           >
-            {settings.heroTitle || 'قم بعمل ريفرش للصفحة مرة أخرى.'}
+            {t('home_title')}
           </h1>
 
           <p
@@ -74,12 +82,17 @@ const HomePage: React.FC = () => {
               WebkitTextStroke: `${(settings.heroSubtitleStrokeWidth ?? settings.heroStrokeWidth ?? 0)}px ${(settings.heroSubtitleStrokeColor ?? settings.heroStrokeColor) || '#1D4ED8'}`,
             }}
           >
-            {settings.heroSubtitle || 'قم بعمل ريفرش للصفحة مرة أخرى.'}
+            {t('home_subtitle')}
           </p>
 
           <div className="space-x-reverse space-x-4">
-            <Link to="/cars" className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">تصفح السيارات</Link>
-            <Link to="/properties" className="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">تصفح العقارات</Link>
+            <Link to="/cars" className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">{t('browse_cars')}</Link>
+            <Link to="/properties" className="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">{t('browse_properties')}</Link>
+          </div>
+          <div className="mt-8 max-w-3xl text-white/90 text-center text-base">
+            <p>{t('hero_p1')}</p>
+            <p className="mt-2">{t('hero_p2')}</p>
+            <p className="mt-2">{t('hero_p3')}</p>
           </div>
         </div>
       </HeroSlider>
@@ -87,8 +100,8 @@ const HomePage: React.FC = () => {
       {/* Featured Cars Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-dark mb-4">السيارات المميزة</h2>
-          <p className="text-center text-gray-600 mb-8">اكتشف مجموعة مختارة من أفضل السيارات المتاحة لدينا</p>
+          <h2 className="text-3xl font-bold text-center text-dark mb-4">{t('featured_cars_title')}</h2>
+          <p className="text-center text-gray-600 mb-8">{t('featured_cars_desc')}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(featuredCars.length ? featuredCars : []).slice(0,3).map((car:any) => (
@@ -98,7 +111,7 @@ const HomePage: React.FC = () => {
 
           <div className="text-center mt-8">
             <Link to="/cars" className="bg-primary text-white py-2 px-6 rounded-md hover:bg-primary-dark transition-colors">
-              عرض جميع السيارات
+              {t('view_all_cars')}
             </Link>
           </div>
         </div>
@@ -107,8 +120,8 @@ const HomePage: React.FC = () => {
       {/* Featured Properties Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-dark mb-4">العقارات المميزة</h2>
-          <p className="text-center text-gray-600 mb-8">اختر من بين أفضل العقارات المتاحة للبيع والإيجار</p>
+          <h2 className="text-3xl font-bold text-center text-dark mb-4">{t('featured_properties_title')}</h2>
+          <p className="text-center text-gray-600 mb-8">{t('featured_properties_desc')}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(featuredProperties.length ? featuredProperties : []).slice(0,3).map((property:any) => (
@@ -118,7 +131,7 @@ const HomePage: React.FC = () => {
 
           <div className="text-center mt-8">
             <Link to="/properties" className="bg-secondary text-white py-2 px-6 rounded-md hover:bg-secondary-dark transition-colors">
-              عرض جميع العقارات
+              {t('view_all_properties')}
             </Link>
           </div>
         </div>
@@ -127,31 +140,31 @@ const HomePage: React.FC = () => {
       {/* Services Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-dark mb-12">خدماتنا</h2>
+          <h2 className="text-3xl font-bold text-center text-dark mb-12">{t('services_title')}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <FaCar className="text-primary text-5xl mx-auto mb-4"/>
-              <h3 className="text-xl font-bold mb-2">بيع السيارات</h3>
-              <p className="text-gray-600">منصتنا توفر لك مجموعة متنوعة من السيارات الجديدة والمستعملة.</p>
+              <h3 className="text-xl font-bold mb-2">{t('service_cars_title')}</h3>
+              <p className="text-gray-600">{t('service_cars_desc')}</p>
             </div>
 
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <FaBuilding className="text-secondary text-5xl mx-auto mb-4"/>
-              <h3 className="text-xl font-bold mb-2">بيع العقارات</h3>
-              <p className="text-gray-600">عقارات سكنية وتجارية في أفضل المواقع.</p>
+              <h3 className="text-xl font-bold mb-2">{t('service_properties_title')}</h3>
+              <p className="text-gray-600">{t('service_properties_desc')}</p>
             </div>
 
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <FaTags className="text-primary text-5xl mx-auto mb-4"/>
-              <h3 className="text-xl font-bold mb-2">ضمان الجودة</h3>
-              <p className="text-gray-600">فحص مفصل لكل سيارة وعقار معروض لضمان حالته.</p>
+              <h3 className="text-xl font-bold mb-2">{t('service_quality_title')}</h3>
+              <p className="text-gray-600">{t('service_quality_desc')}</p>
             </div>
 
             <div className="text-center p-6 bg-white rounded-lg shadow-md">
               <FaHeadset className="text-secondary text-5xl mx-auto mb-4"/>
-              <h3 className="text-xl font-bold mb-2">خدمة العملاء</h3>
-              <p className="text-gray-600">دعم متواصل لمساعدتك على مدار الساعة.</p>
+              <h3 className="text-xl font-bold mb-2">{t('service_support_title')}</h3>
+              <p className="text-gray-600">{t('service_support_desc')}</p>
             </div>
           </div>
         </div>

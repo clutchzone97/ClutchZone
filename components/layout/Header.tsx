@@ -2,12 +2,15 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../ui/Logo';
 import { useSiteSettings } from '../../context/SiteSettingsContext';
+import LanguageSwitcher from '../LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Header: React.FC = () => {
+  const { t } = useTranslation();
   const navLinks = [
-    { name: 'الرئيسية', path: '/' },
-    { name: 'السيارات', path: '/cars' },
-    { name: 'العقارات', path: '/properties' },
+    { key: 'nav_home', path: '/' },
+    { key: 'nav_cars', path: '/cars' },
+    { key: 'nav_properties', path: '/properties' },
   ];
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -68,7 +71,7 @@ const Header: React.FC = () => {
         <nav className="hidden md:grid md:grid-cols-3 md:gap-6 md:place-items-center">
           {navLinks.map((link) => (
             <Link
-              key={link.name}
+              key={link.key}
               to={link.path}
               className={`transition-all duration-200 rounded-full px-4 py-2 ${scrolled ? 'text-gray-800' : 'text-white'} active:translate-y-[1px]`}
               style={{
@@ -79,10 +82,15 @@ const Header: React.FC = () => {
                 boxShadow: '0 4px 0 rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.35)',
               }}
             >
-              {link.name}
+              {t(link.key)}
             </Link>
           ))}
         </nav>
+
+        {/* محول اللغة */}
+        <div className="hidden md:block">
+          <LanguageSwitcher />
+        </div>
 
         {/* أيقونة الموبايل */}
         <div className="md:hidden">
@@ -104,7 +112,7 @@ const Header: React.FC = () => {
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.key}
                 to={link.path}
                 className="inline-block text-white transition-all duration-200 rounded-full px-4 py-2 active:translate-y-[1px]"
                 style={{
@@ -116,9 +124,12 @@ const Header: React.FC = () => {
                 }}
                 onClick={() => setMobileOpen(false)}
               >
-                {link.name}
+                {t(link.key)}
               </Link>
             ))}
+            <div className="pt-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

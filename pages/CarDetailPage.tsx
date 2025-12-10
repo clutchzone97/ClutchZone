@@ -6,6 +6,8 @@ import Footer from '../components/layout/Footer';
 import api from '../utils/api';
 import { formatCurrency, formatNumber } from '../utils/formatters';
 import PurchaseRequestModal from '../components/orders/PurchaseRequestModal';
+import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
+import { useTranslation } from 'react-i18next';
 
 interface CarDoc {
   _id: string;
@@ -23,6 +25,7 @@ interface CarDoc {
 
 const CarDetailPage: React.FC = () => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const [car, setCar] = useState<CarDoc | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -49,11 +52,20 @@ const CarDetailPage: React.FC = () => {
     load();
   }, [id]);
 
+  useEffect(() => {
+    if (!car) return;
+    const displayTitle = car.title || `${car.brand || ''} ${car.model || ''}`.trim();
+    const title = `${displayTitle} | سيارات في مصر`;
+    const desc = `سيارة ${displayTitle} ${car.year ? `موديل ${car.year}` : ''} ${typeof car.price === 'number' ? `بسعر ${formatCurrency(car.price)}` : ''}. عروض موجهة للسوق المصري.`.trim();
+    const img = (car.images && car.images[0]) || undefined;
+    setPageSEO({ title, description: desc, canonicalUrl: canonicalForHashRouter('https://www.clutchzone.co'), image: img });
+  }, [car]);
+
   if (loading) {
     return (
       <div className="bg-light min-h-screen">
         <Header />
-        <div className="container mx-auto px-4 py-24">جاري التحميل...</div>
+        <div className="container mx-auto px-4 py-24">{t('loading_text')}</div>
         <Footer />
       </div>
     );
@@ -63,7 +75,7 @@ const CarDetailPage: React.FC = () => {
     return (
       <div className="bg-light min-h-screen">
         <Header />
-        <div className="container mx-auto px-4 py-24">{error || 'حدث خطأ'}</div>
+        <div className="container mx-auto px-4 py-24">{error || t('error_text')}</div>
         <Footer />
       </div>
     );
@@ -73,12 +85,12 @@ const CarDetailPage: React.FC = () => {
   const gallery = (car.images && car.images.length > 0) ? car.images : [];
 
   const specs = [
-    { label: 'الماركة', value: car.brand || '-' },
-    { label: 'الموديل', value: car.model || '-' },
-    { label: 'السنة', value: car.year ?? '-' },
-    { label: 'المسافة المقطوعة', value: `${formatNumber(car.km || 0)} كم` },
-    { label: 'ناقل الحركة', value: car.transmission || '-' },
-    { label: 'نوع الوقود', value: car.fuel || '-' },
+    { label: t('spec_brand'), value: car.brand || '-' },
+    { label: t('spec_model'), value: car.model || '-' },
+    { label: t('spec_year'), value: car.year ?? '-' },
+    { label: t('spec_km'), value: `${formatNumber(car.km || 0)} ${t('unit_km')}` },
+    { label: t('spec_transmission'), value: car.transmission || '-' },
+    { label: t('spec_fuel'), value: car.fuel || '-' },
   ];
 
   return (
@@ -92,7 +104,7 @@ const CarDetailPage: React.FC = () => {
               {mainImage ? (
                 <img src={mainImage} alt={displayTitle} className="w-full h-96 object-cover rounded-lg mb-4"/>
               ) : (
-                <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 flex items-center justify-center text-gray-500">لا توجد صور</div>
+                <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 flex items-center justify-center text-gray-500">{t('no_images')}</div>
               )}
               {gallery.length > 0 && (
                 <div className="grid grid-cols-4 gap-2">
@@ -115,11 +127,12 @@ const CarDetailPage: React.FC = () => {
                 <span className="inline-block px-3 py-1 text-sm font-semibold text-white rounded-full mb-2 bg-blue-500">{car.year}</span>
               )}
               <h1 className="text-3xl font-bold mb-2">{displayTitle}</h1>
+              <p className="text-gray-700 mb-4">تفاصيل السيارة المتاحة في مصر{car.year ? `، موديل ${car.year}` : ''}{typeof car.price === 'number' ? `، ضمن نطاق سعر ${formatCurrency(car.price)}` : ''}. مواصفات مختارة لتسهيل قرار الشراء.</p>
               {typeof car.price === 'number' && (
                 <p className="text-4xl font-bold text-primary mb-6">{formatCurrency(car.price)}</p>
               )}
               <div className="border-t pt-4">
-                <h3 className="text-xl font-semibold mb-4">المواصفات</h3>
+                <h3 className="text-xl font-semibold mb-4">{t('specs_title')}</h3>
                 <div className="grid grid-cols-2 gap-4 text-gray-700">
                   {specs.map(spec => (
                     <div key={spec.label} className="flex justify-between border-b pb-2">
@@ -131,7 +144,7 @@ const CarDetailPage: React.FC = () => {
               </div>
 
               <button onClick={() => setOpenOrder(true)} className="mt-8 w-full bg-primary text-white py-3 rounded-md text-lg font-semibold hover:bg-primary-dark transition-colors">
-                أرسل طلب شراء
+                {t('send_purchase_request')}
               </button>
             </div>
           </div>
@@ -139,7 +152,7 @@ const CarDetailPage: React.FC = () => {
           {/* Description */}
           {car.description && (
             <div className="mt-12 border-t pt-8">
-              <h2 className="text-2xl font-bold mb-4">وصف السيارة</h2>
+              <h2 className="text-2xl font-bold mb-4">{t('car_description_title')}</h2>
               <p className="text-gray-600 leading-relaxed">{car.description}</p>
             </div>
           )}

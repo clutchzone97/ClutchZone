@@ -5,8 +5,10 @@ import { FaXTwitter, FaTiktok } from 'react-icons/fa6';
 import Logo from '../ui/Logo';
 import { Link } from 'react-router-dom';
 import { useSiteSettings } from '../../context/SiteSettingsContext';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const { settings } = useSiteSettings();
   const phone = settings.phone || '011500978111';
   const email = settings.email || 'clutchzone97@gmail.com';
@@ -43,18 +45,18 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">روابط سريعة</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t('quick_links_title')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/" className="hover:text-primary transition-colors">الرئيسية</Link></li>
-              <li><Link to="/cars" className="hover:text-primary transition-colors">السيارات</Link></li>
-              <li><Link to="/properties" className="hover:text-primary transition-colors">العقارات</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">من نحن</Link></li>
+              <li><Link to="/" className="hover:text-primary transition-colors">{t('nav_home')}</Link></li>
+              <li><Link to="/cars" className="hover:text-primary transition-colors">{t('nav_cars')}</Link></li>
+              <li><Link to="/properties" className="hover:text-primary transition-colors">{t('nav_properties')}</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">{t('nav_about')}</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">تواصل معنا</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t('contact_title')}</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center">
                 <FaPhone className="me-3 text-primary" />
@@ -73,7 +75,7 @@ const Footer: React.FC = () => {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold text-white mb-4">تابعنا</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t('follow_us_title')}</h3>
             <div className="flex space-x-reverse space-x-4">
               <a href={facebook} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors"><FaFacebook size={24} /></a>
               <a href={twitter} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-primary transition-colors"><FaXTwitter size={24} /></a>
@@ -85,7 +87,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm">
-          <p>Clutch Zone © 2024. جميع الحقوق محفوظة.</p>
+          <p>{t('footer_copyright')}</p>
         </div>
       </div>
     </footer>

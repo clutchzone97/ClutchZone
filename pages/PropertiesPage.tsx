@@ -6,6 +6,7 @@ import PropertyCard from '../components/listings/PropertyCard';
 import api from '../utils/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
+import { useTranslation } from 'react-i18next';
 
 interface PropertyDoc {
   _id: string;
@@ -22,6 +23,7 @@ interface PropertyDoc {
 }
 
 const PropertiesPage: React.FC = () => {
+  const { t } = useTranslation();
   const [properties, setProperties] = useState<PropertyDoc[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -66,35 +68,35 @@ const PropertiesPage: React.FC = () => {
       
       <HeroSlider images={slides} heightClass="h-[40vh]" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
         <div className="flex flex-col justify-center items-center text-center px-4 h-full">
-          <h1 className="text-4xl md:text-5xl font-bold">العقارات المتاحة</h1>
-          <p className="text-lg mt-2">اكتشف أفضل العقارات للبيع والإيجار في أفضل المواقع</p>
+          <h1 className="text-4xl md:text-5xl font-bold">{t('properties_available_title')}</h1>
+          <p className="text-lg mt-2">{t('properties_available_subtitle')}</p>
         </div>
       </HeroSlider>
       
       <div className="container mx-auto px-4 py-12">
         {/* Filter Section (غير مفعلة حاليًا) */}
         <div className="bg-white p-4 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
-          <input value={q} onChange={e=>setQ(e.target.value)} type="text" placeholder="البحث عن عقار..." className="w-full p-2 border border-gray-300 rounded-md"/>
+          <input value={q} onChange={e=>setQ(e.target.value)} type="text" placeholder={t('search_property_placeholder')} className="w-full p-2 border border-gray-300 rounded-md"/>
           <select value={purpose} onChange={e=>setPurpose(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
-            <option value="">الغرض</option>
-            <option value="للبيع">للبيع</option>
-            <option value="للإيجار">للإيجار</option>
+            <option value="">{t('purpose_label')}</option>
+            <option value="للبيع">{t('purpose_for_sale')}</option>
+            <option value="للإيجار">{t('purpose_for_rent')}</option>
           </select>
           <select value={sort} onChange={e=>setSort(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
-            <option value="newest">الأحدث</option>
-            <option value="oldest">الأقدم</option>
-            <option value="priceAsc">السعر من الأقل للأعلى</option>
-            <option value="priceDesc">السعر من الأعلى للأقل</option>
+            <option value="newest">{t('sort_newest')}</option>
+            <option value="oldest">{t('sort_oldest')}</option>
+            <option value="priceAsc">{t('sort_price_asc')}</option>
+            <option value="priceDesc">{t('sort_price_desc')}</option>
           </select>
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={featuredOnly} onChange={e=>setFeaturedOnly(e.target.checked)} />
-            <span>مميز فقط</span>
+            <span>{t('featured_only')}</span>
           </label>
         </div>
         
         {/* Listings */}
         {loading && (
-          <div className="mb-4 text-gray-700">جاري التحميل...</div>
+          <div className="mb-4 text-gray-700">{t('loading_text')}</div>
         )}
         {error && (
           <div className="mb-4 text-red-600">{error}</div>
@@ -102,7 +104,7 @@ const PropertiesPage: React.FC = () => {
         {!loading && !error && (
           <>
            <div className="mb-4 text-gray-700 font-semibold">
-            النتائج ({properties.length} عقار)
+            {t('results_properties', { count: properties.length })}
            </div>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
              {([...properties].sort((a:any,b:any)=>{

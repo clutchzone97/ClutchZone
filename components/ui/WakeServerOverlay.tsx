@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import api from "../../utils/api";
+import { useTranslation } from "react-i18next";
 
 const WakeServerOverlay: React.FC = () => {
+  const { t } = useTranslation();
   const [isSleeping, setIsSleeping] = useState(true);
   const [countdown, setCountdown] = useState(10);
   const [visible, setVisible] = useState(true);
@@ -52,17 +54,17 @@ const WakeServerOverlay: React.FC = () => {
         </div>
 
         <h2 className="text-3xl font-bold mb-4">
-          🔄 جاري إيقاظ الخادم...
+          {t('waking_server_title')}
         </h2>
 
         <p className="text-lg leading-relaxed mb-4">
-          السيرفر في وضع السكون  
+          {t('server_sleeping')}
           <br />
-          سيستغرق الاستيقاظ من 5 إلى 20 ثانية.
+          {t('wake_time_hint')}
         </p>
 
         <p className="text-sm opacity-80 mb-4">
-          سيتم إعادة المحاولة خلال: <strong>{countdown}</strong> ثانية
+          {t('retry_in_seconds', { countdown })}
         </p>
 
         <button
@@ -73,7 +75,7 @@ const WakeServerOverlay: React.FC = () => {
             transition-transform duration-200 hover:scale-105 
           "
         >
-          إعادة المحاولة الآن
+          {t('retry_now')}
         </button>
       </div>
     </div>

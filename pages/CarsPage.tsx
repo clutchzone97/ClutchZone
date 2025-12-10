@@ -7,6 +7,7 @@ import CarCard from '../components/listings/CarCard';
 import api from '../utils/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
+import { useTranslation } from 'react-i18next';
 
 // تعريف بسيط لشكل البيانات القادمة من الـAPI
 interface CarDoc {
@@ -23,6 +24,7 @@ interface CarDoc {
 }
 
 const CarsPage: React.FC = () => {
+  const { t } = useTranslation();
   const [cars, setCars] = useState<CarDoc[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -70,36 +72,36 @@ const CarsPage: React.FC = () => {
       
       <HeroSlider images={slides} heightClass="h-[40vh]" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
         <div className="flex flex-col justify-center items-center text-center px-4 h-full">
-          <h1 className="text-4xl md:text-5xl font-bold">السيارات المتاحة</h1>
-          <p className="text-lg mt-2">اكتشف مجموعة واسعة من السيارات الجديدة والمستعملة بأفضل الأسعار</p>
+          <h1 className="text-4xl md:text-5xl font-bold">{t('cars_available_title')}</h1>
+          <p className="text-lg mt-2">{t('cars_available_subtitle')}</p>
         </div>
       </HeroSlider>
       
       <div className="container mx-auto px-4 py-12">
         {/* Filter Section (غير مفعلة حاليًا) */}
         <div className="bg-white p-4 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
-          <input value={q} onChange={e=>setQ(e.target.value)} type="text" placeholder="البحث عن سيارة..." className="w-full p-2 border border-gray-300 rounded-md"/>
+          <input value={q} onChange={e=>setQ(e.target.value)} type="text" placeholder={t('search_car_placeholder')} className="w-full p-2 border border-gray-300 rounded-md"/>
           <select value={priceBand} onChange={e=>setPriceBand(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
-            <option value="">جميع الأسعار</option>
-            <option value="lt100">أقل من 100,000</option>
-            <option value="100-500">100,000 - 500,000</option>
-            <option value="gt500">أكثر من 500,000</option>
+            <option value="">{t('price_all')}</option>
+            <option value="lt100">{t('price_lt100')}</option>
+            <option value="100-500">{t('price_range_100_500')}</option>
+            <option value="gt500">{t('price_gt500')}</option>
           </select>
           <select value={sort} onChange={e=>setSort(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
-            <option value="newest">الأحدث</option>
-            <option value="oldest">الأقدم</option>
-            <option value="priceAsc">السعر من الأقل للأعلى</option>
-            <option value="priceDesc">السعر من الأعلى للأقل</option>
+            <option value="newest">{t('sort_newest')}</option>
+            <option value="oldest">{t('sort_oldest')}</option>
+            <option value="priceAsc">{t('sort_price_asc')}</option>
+            <option value="priceDesc">{t('sort_price_desc')}</option>
           </select>
           <label className="flex items-center gap-2">
             <input type="checkbox" checked={featuredOnly} onChange={e=>setFeaturedOnly(e.target.checked)} />
-            <span>مميز فقط</span>
+            <span>{t('featured_only')}</span>
           </label>
         </div>
         
         {/* Listings */}
         {loading && (
-          <div className="mb-4 text-gray-700">جاري التحميل...</div>
+          <div className="mb-4 text-gray-700">{t('loading_text')}</div>
         )}
         {error && (
           <div className="mb-4 text-red-600">{error}</div>
@@ -107,7 +109,7 @@ const CarsPage: React.FC = () => {
         {!loading && !error && (
           <>
             <div className="mb-4 text-gray-700 font-semibold">
-              النتائج ({cars.length} سيارة)
+              {t('results_cars', { count: cars.length })}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {([...cars].sort((a:any,b:any)=>{

@@ -33,6 +33,8 @@ const PropertiesPage: React.FC = () => {
   const [idx, setIdx] = useState(0);
   const [q, setQ] = useState('');
   const [purpose, setPurpose] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
   const [sort, setSort] = useState('newest');
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
   const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
@@ -48,8 +50,33 @@ const PropertiesPage: React.FC = () => {
         if (featuredOnly) params.featured = true;
         if (q.trim()) params.q = q.trim();
         if (purpose) params.purpose = purpose;
+        const minVal = Number(minPrice);
+        const maxVal = Number(maxPrice);
+        if (!isNaN(minVal) || !isNaN(maxVal)) {
+          let minP = !isNaN(minVal) ? minVal : undefined;
+          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+          if (minP !== undefined && maxP !== undefined && minP > maxP) {
+            const tmp = minP; minP = maxP; maxP = tmp;
+          }
+          if (minP !== undefined) (params as any).minPrice = minP;
+          if (maxP !== undefined) (params as any).maxPrice = maxP;
+        }
         const res = await api.get('/properties', { params });
-        setProperties(res.data || []);
+        let data = res.data || [];
+        if (!isNaN(minVal) || !isNaN(maxVal)) {
+          let minP = !isNaN(minVal) ? minVal : undefined;
+          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+          if (minP !== undefined && maxP !== undefined && minP > maxP) {
+            const tmp = minP; minP = maxP; maxP = tmp;
+          }
+          data = data.filter((p:any) => {
+            const price = Number(p.price || 0);
+            if (minP !== undefined && price < minP) return false;
+            if (maxP !== undefined && price > maxP) return false;
+            return true;
+          });
+        }
+        setProperties(data);
         const imgs = (res.data || []).filter((p:any)=>p.featured || !featuredOnly).map((p:any)=>(p.images && p.images[0]) || p.imageUrl).filter(Boolean);
         setSlides(imgs.length ? imgs : ["https://picsum.photos/seed/properties-hero/1920/1080"]);
       } catch (err) {
@@ -135,6 +162,24 @@ const PropertiesPage: React.FC = () => {
             <option value="للبيع">{t('purpose_for_sale')}</option>
             <option value="للإيجار">{t('purpose_for_rent')}</option>
           </select>
+          <div className="flex gap-3">
+            <input
+              type="number"
+              min="0"
+              placeholder={t('min_price')}
+              className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
+              value={minPrice}
+              onChange={(e)=>setMinPrice(e.target.value)}
+            />
+            <input
+              type="number"
+              min="0"
+              placeholder={t('max_price')}
+              className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
+              value={maxPrice}
+              onChange={(e)=>setMaxPrice(e.target.value)}
+            />
+          </div>
           <select value={sort} onChange={e=>setSort(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
             <option value="newest">{t('sort_newest')}</option>
             <option value="oldest">{t('sort_oldest')}</option>

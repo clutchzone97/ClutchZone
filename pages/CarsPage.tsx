@@ -33,7 +33,8 @@ const CarsPage: React.FC = () => {
   const [slides, setSlides] = useState<string[]>([]);
   const [idx, setIdx] = useState(0);
   const [q, setQ] = useState('');
-  const [priceBand, setPriceBand] = useState('');
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
   const [sort, setSort] = useState('newest');
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
   const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
@@ -48,12 +49,34 @@ const CarsPage: React.FC = () => {
         const params: any = {};
         if (featuredOnly) params.featured = true;
         if (q.trim()) params.q = q.trim();
-        if (priceBand === 'lt100') params.maxPrice = 100000;
-        if (priceBand === '100-500') { params.minPrice = 100000; params.maxPrice = 500000; }
-        if (priceBand === 'gt500') params.minPrice = 500000;
+        const minVal = Number(minPrice);
+        const maxVal = Number(maxPrice);
+        if (!isNaN(minVal) || !isNaN(maxVal)) {
+          let minP = !isNaN(minVal) ? minVal : undefined;
+          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+          if (minP !== undefined && maxP !== undefined && minP > maxP) {
+            const tmp = minP; minP = maxP; maxP = tmp;
+          }
+          if (minP !== undefined) params.minPrice = minP;
+          if (maxP !== undefined) params.maxPrice = maxP;
+        }
         if (sort === 'newest') params.sort = 'newest';
         const res = await api.get('/cars', { params });
-        setCars(res.data || []);
+        let data = res.data || [];
+        if (!isNaN(minVal) || !isNaN(maxVal)) {
+          let minP = !isNaN(minVal) ? minVal : undefined;
+          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+          if (minP !== undefined && maxP !== undefined && minP > maxP) {
+            const tmp = minP; minP = maxP; maxP = tmp;
+          }
+          data = data.filter((c:any) => {
+            const p = Number(c.price || 0);
+            if (minP !== undefined && p < minP) return false;
+            if (maxP !== undefined && p > maxP) return false;
+            return true;
+          });
+        }
+        setCars(data);
         const imgs = (res.data || []).filter((c:any)=>c.featured || !featuredOnly).map((c:any)=>(c.images && c.images[0]) || c.imageUrl).filter(Boolean);
         setSlides(imgs.length ? imgs : ["https://picsum.photos/seed/cars-hero/1920/1080"]);
       } catch (err) {
@@ -134,12 +157,24 @@ const CarsPage: React.FC = () => {
         {/* Filter Section (غير مفعلة حاليًا) */}
         <div className="bg-white p-4 rounded-lg shadow-md mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
           <input value={q} onChange={e=>setQ(e.target.value)} type="text" placeholder={t('search_car_placeholder')} className="w-full p-2 border border-gray-300 rounded-md"/>
-          <select value={priceBand} onChange={e=>setPriceBand(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
-            <option value="">{t('price_all')}</option>
-            <option value="lt100">{t('price_lt100')}</option>
-            <option value="100-500">{t('price_range_100_500')}</option>
-            <option value="gt500">{t('price_gt500')}</option>
-          </select>
+          <div className="flex gap-3">
+            <input
+              type="number"
+              min="0"
+              placeholder={t('min_price')}
+              className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
+              value={minPrice}
+              onChange={(e)=>setMinPrice(e.target.value)}
+            />
+            <input
+              type="number"
+              min="0"
+              placeholder={t('max_price')}
+              className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
+              value={maxPrice}
+              onChange={(e)=>setMaxPrice(e.target.value)}
+            />
+          </div>
           <select value={sort} onChange={e=>setSort(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">
             <option value="newest">{t('sort_newest')}</option>
             <option value="oldest">{t('sort_oldest')}</option>

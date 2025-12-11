@@ -67,6 +67,9 @@
   "sort_price_desc": "السعر من الأعلى للأقل",
   "featured_only": "مميز فقط",
   "results_cars": "النتائج ({{count}} سيارة)",
+  "min_price": "الحد الأدنى للسعر",
+  "max_price": "الحد الأقصى للسعر",
+  "enter_value": "اكتب القيمة...",
 
   "properties_available_title": "العقارات المتاحة",
   "properties_available_subtitle": "اكتشف أفضل العقارات للبيع والإيجار في أفضل المواقع",

@@ -67,6 +67,9 @@
   "sort_price_desc": "Price: High to Low",
   "featured_only": "Featured only",
   "results_cars": "Results ({{count}} cars)",
+  "min_price": "Minimum Price",
+  "max_price": "Maximum Price",
+  "enter_value": "Enter value...",
 
   "properties_available_title": "Available Properties",
   "properties_available_subtitle": "Discover top properties for sale and rent in prime locations",

@@ -121,6 +121,8 @@ const HomePage: React.FC = () => {
                   width: pulse ? 10 : 6,
                   height: pulse ? 10 : 6,
                   backgroundColor: pulse ? '#00AEEF' : 'rgba(255,255,255,0.5)',
+                  transform: pulse ? 'scale(1.0)' : 'scale(0.9)',
+                  opacity: pulse ? 1 : 0.7,
                   transition: 'all 0.25s ease-in-out'
                 }}
               />

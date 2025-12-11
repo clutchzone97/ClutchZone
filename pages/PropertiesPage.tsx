@@ -34,6 +34,9 @@ const PropertiesPage: React.FC = () => {
   const [q, setQ] = useState('');
   const [purpose, setPurpose] = useState('');
   const [sort, setSort] = useState('newest');
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [pulse, setPulse] = useState(false);
   
   useEffect(() => {
     const load = async () => {
@@ -61,17 +64,49 @@ const PropertiesPage: React.FC = () => {
     const t = setInterval(() => setIdx(i => (i+1) % slides.length), 3000);
     return () => clearInterval(t);
   }, [slides]);
+  useEffect(() => {
+    if (!slides.length) return;
+    const ms = settings.heroSlideIntervalMs ?? 3000;
+    const timer = setInterval(() => {
+      setCurrentSlide((i) => {
+        const next = (i + 1) % slides.length;
+        setPulse(true);
+        setTimeout(() => setPulse(false), 250);
+        return next;
+      });
+    }, ms);
+    return () => clearInterval(timer);
+  }, [slides, settings.heroSlideIntervalMs]);
   
   return (
     <div className="bg-light">
       <Header />
       
+      <div className="hide-hero-dots-mobile">
+      <style>{`@media (max-width: 767px){ .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-3, .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-5 { display: none !important; } }`}</style>
       <HeroSlider images={slides} heightClass="h-[40vh]" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
         <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-24 md:pt-28">
           <h1 className="text-4xl md:text-5xl font-bold">{t('properties_available_title')}</h1>
           <p className="text-lg mt-2">{t('properties_available_subtitle')}</p>
+          {isMobile && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+              <div
+                className={`rounded-full transition-all`}
+                style={{
+                  width: pulse ? 10 : 6,
+                  height: pulse ? 10 : 6,
+                  backgroundColor: pulse ? '#00AEEF' : 'rgba(255,255,255,0.5)',
+                  transform: pulse ? 'scale(1.0)' : 'scale(0.9)',
+                  opacity: pulse ? 1 : 0.7,
+                  transition: 'all 0.25s ease-in-out'
+                }}
+                aria-hidden="true"
+              />
+            </div>
+          )}
         </div>
       </HeroSlider>
+      </div>
       
       <div className="container mx-auto px-4 py-12">
         {/* Filter Section (غير مفعلة حاليًا) */}

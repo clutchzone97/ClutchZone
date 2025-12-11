@@ -33,8 +33,8 @@ const CarsPage: React.FC = () => {
   const [slides, setSlides] = useState<string[]>([]);
   const [idx, setIdx] = useState(0);
   const [q, setQ] = useState('');
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+  const [minPrice, setMinPrice] = useState<number | null>(null);
+  const [maxPrice, setMaxPrice] = useState<number | null>(null);
   const [sort, setSort] = useState('newest');
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
   const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
@@ -49,11 +49,9 @@ const CarsPage: React.FC = () => {
         const params: any = {};
         if (featuredOnly) params.featured = true;
         if (q.trim()) params.q = q.trim();
-        const minVal = Number(minPrice);
-        const maxVal = Number(maxPrice);
-        if (!isNaN(minVal) || !isNaN(maxVal)) {
-          let minP = !isNaN(minVal) ? minVal : undefined;
-          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+        if (minPrice !== null || maxPrice !== null) {
+          let minP = minPrice ?? undefined;
+          let maxP = maxPrice ?? undefined;
           if (minP !== undefined && maxP !== undefined && minP > maxP) {
             const tmp = minP; minP = maxP; maxP = tmp;
           }
@@ -63,9 +61,9 @@ const CarsPage: React.FC = () => {
         if (sort === 'newest') params.sort = 'newest';
         const res = await api.get('/cars', { params });
         let data = res.data || [];
-        if (!isNaN(minVal) || !isNaN(maxVal)) {
-          let minP = !isNaN(minVal) ? minVal : undefined;
-          let maxP = !isNaN(maxVal) ? maxVal : undefined;
+        if (minPrice !== null || maxPrice !== null) {
+          let minP = minPrice ?? undefined;
+          let maxP = maxPrice ?? undefined;
           if (minP !== undefined && maxP !== undefined && minP > maxP) {
             const tmp = minP; minP = maxP; maxP = tmp;
           }
@@ -86,7 +84,7 @@ const CarsPage: React.FC = () => {
       }
     };
     load();
-  }, [featuredOnly, q, priceBand, sort]);
+  }, [featuredOnly, q, minPrice, maxPrice, sort]);
   useEffect(() => {
     if (!slides.length) return;
     const t = setInterval(() => setIdx(i => (i+1) % slides.length), 3000);
@@ -163,16 +161,16 @@ const CarsPage: React.FC = () => {
               min="0"
               placeholder={t('min_price')}
               className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
-              value={minPrice}
-              onChange={(e)=>setMinPrice(e.target.value)}
+              value={minPrice ?? ''}
+              onChange={(e)=>setMinPrice(e.target.value === '' ? null : Number(e.target.value))}
             />
             <input
               type="number"
               min="0"
               placeholder={t('max_price')}
               className="w-full rounded-xl border border-gray-300 bg-white py-3 px-4 text-base"
-              value={maxPrice}
-              onChange={(e)=>setMaxPrice(e.target.value)}
+              value={maxPrice ?? ''}
+              onChange={(e)=>setMaxPrice(e.target.value === '' ? null : Number(e.target.value))}
             />
           </div>
           <select value={sort} onChange={e=>setSort(e.target.value)} className="w-full p-2 border border-gray-300 rounded-md">

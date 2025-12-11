@@ -9,6 +9,14 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        proxy: {
+          '/api': {
+            target: 'https://clutchzone-backend.onrender.com',
+            changeOrigin: true,
+            secure: false,
+            rewrite: (path) => path.replace(/^\/api/, '/api'),
+          }
+        }
       },
       plugins: [react(), tailwindcss()],
       define: {

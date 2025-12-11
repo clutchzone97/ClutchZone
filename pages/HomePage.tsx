@@ -18,6 +18,7 @@ const HomePage: React.FC = () => {
   const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
   const { settings } = useSiteSettings();
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pulse, setPulse] = useState(false);
 
@@ -81,7 +82,7 @@ const HomePage: React.FC = () => {
 
       {/* Hero Section */}
       <div className="hide-hero-dots-mobile">
-      <style>{`@media (max-width: 767px){ .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-3, .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-5 { display: none !important; } }`}</style>
+      <style>{`.hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-3, .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-5 { display: none !important; }`}</style>
       <HeroSlider images={slides} heightClass="h-screen" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
         <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-24 md:pt-28">
           <h1
@@ -126,6 +127,23 @@ const HomePage: React.FC = () => {
                   transition: 'all 0.25s ease-in-out'
                 }}
               />
+            </div>
+          )}
+          {isDesktop && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+              {slides.map((_, i) => (
+                <div
+                  key={i}
+                  className="transition-all"
+                  style={{
+                    width: currentSlide === i ? 14 : 6,
+                    height: 6,
+                    borderRadius: '999px',
+                    backgroundColor: currentSlide === i ? '#00AEEF' : 'rgba(255,255,255,0.4)',
+                    transition: 'all 0.3s ease-in-out',
+                  }}
+                />
+              ))}
             </div>
           )}
         </div>

@@ -106,8 +106,8 @@ const HomePage: React.FC = () => {
           </p>
 
           <div className="space-x-reverse space-x-4">
-            <Link to="/cars" className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">{t('browse_cars')}</Link>
-            <Link to="/properties" className="bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-md transition-transform duration-300 hover:scale-105">{t('browse_properties')}</Link>
+            <Link to="/cars" className="btn-primary-safe bg-primary text-white font-bold rounded-md hover:bg-primary-dark">{t('browse_cars')}</Link>
+            <Link to="/properties" className="btn-primary-safe bg-secondary text-white font-bold rounded-md hover:bg-secondary-dark">{t('browse_properties')}</Link>
           </div>
           <div className="mt-8 max-w-3xl text-white/90 text-center text-base">
             <p>{t('hero_p1')}</p>

@@ -4,10 +4,22 @@ import Logo from '../ui/Logo';
 import { useSiteSettings } from '../../context/SiteSettingsContext';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { useTranslation } from 'react-i18next';
+import api from '../../utils/api';
+
+interface Category {
+  _id: string;
+  name_ar: string;
+  name_en: string;
+  logo_url?: string;
+  children?: Category[];
+}
 
 const Header: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
   const navLinks = [
     { key: 'nav_home', path: '/' },
     { key: 'nav_cars', path: '/cars' },
@@ -68,6 +80,21 @@ const Header: React.FC = () => {
   }, [mobileOpen]);
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await api.get('/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
     };
@@ -81,7 +108,7 @@ const Header: React.FC = () => {
       <div className="hidden md:block">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Logo />
-          <nav className="hidden md:grid md:grid-cols-3 md:gap-6 md:place-items-center">
+          <nav className="hidden md:grid md:grid-cols-auto md:gap-6 md:place-items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.key}
@@ -96,6 +123,29 @@ const Header: React.FC = () => {
                 }}
               >
                 {t(link.key)}
+              </Link>
+            ))}
+            {!loading && categories.map((category) => (
+              <Link
+                key={category._id}
+                to={`/category/${category._id}`}
+                className={`transition-all duration-200 rounded-full px-4 py-2 ${scrolled ? 'text-gray-800' : 'text-white'} active:translate-y-[1px] flex items-center gap-2`}
+                style={{
+                  color: settings.headerNavTextColor || undefined,
+                  WebkitTextStroke: `${(settings.headerNavStrokeWidth ?? 1)}px ${settings.headerNavStrokeColor || settings.primaryColor || '#1D4ED8'}`,
+                  backgroundColor: pillBg,
+                  backgroundImage: pillGradient,
+                  boxShadow: '0 4px 0 rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.35)',
+                }}
+              >
+                {category.logo_url && (
+                  <img 
+                    src={category.logo_url} 
+                    alt={i18n.language === 'ar' ? category.name_ar : category.name_en}
+                    className="w-5 h-5 rounded-full object-cover"
+                  />
+                )}
+                {i18n.language === 'ar' ? category.name_ar : category.name_en}
               </Link>
             ))}
           </nav>
@@ -134,6 +184,23 @@ const Header: React.FC = () => {
                   onClick={() => setMobileOpen(false)}
                 >
                   {t(link.key)}
+                </Link>
+              ))}
+              {!loading && categories.map((category) => (
+                <Link
+                  key={category._id}
+                  to={`/category/${category._id}`}
+                  className="block px-3 py-2 rounded-md hover:bg-white/10 flex items-center gap-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {category.logo_url && (
+                    <img 
+                      src={category.logo_url} 
+                      alt={i18n.language === 'ar' ? category.name_ar : category.name_en}
+                      className="w-4 h-4 rounded-full object-cover"
+                    />
+                  )}
+                  {i18n.language === 'ar' ? category.name_ar : category.name_en}
                 </Link>
               ))}
             </div>

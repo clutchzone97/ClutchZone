@@ -21,6 +21,7 @@ interface CarDoc {
   transmission?: string;
   fuel?: string;
   images?: string[];
+  display_order?: number;
 }
 
 const CarsPage: React.FC = () => {

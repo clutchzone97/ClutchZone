@@ -207,6 +207,10 @@ const PropertiesPage: React.FC = () => {
                if (sort === 'priceAsc') return (a.price||0) - (b.price||0);
                if (sort === 'priceDesc') return (b.price||0) - (a.price||0);
                if (sort === 'oldest') return new Date(a.createdAt as any).getTime() - new Date(b.createdAt as any).getTime();
+               // Default: display_order asc, then createdAt desc
+               const orderA = a.display_order ?? 999999;
+               const orderB = b.display_order ?? 999999;
+               if (orderA !== orderB) return orderA - orderB;
                return new Date(b.createdAt as any).getTime() - new Date(a.createdAt as any).getTime();
              })).map(property => (
                <PropertyCard key={property._id} property={property as any} />

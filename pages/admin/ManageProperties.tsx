@@ -43,6 +43,7 @@ const ManageProperties: React.FC = () => {
   const { show } = useToast();
   const [properties, setProperties] = useState<PropertyDoc[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const loadProperties = async () => {
     setLoading(true);
@@ -55,6 +56,16 @@ const ManageProperties: React.FC = () => {
       setLoading(false);
     }
   };
+
+  const filteredProperties = properties.filter(prop => {
+    if (!searchTerm) return true;
+    const lower = searchTerm.toLowerCase();
+    return (
+      (prop.title?.toLowerCase() || '').includes(lower) ||
+      (prop.location?.toLowerCase() || '').includes(lower) ||
+      ((prop as any).description?.toLowerCase() || '').includes(lower)
+    );
+  });
 
   useEffect(() => { loadProperties(); }, []);
 

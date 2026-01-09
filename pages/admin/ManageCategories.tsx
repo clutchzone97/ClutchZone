@@ -48,7 +48,7 @@ const ManageCategories: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [flatCategories, setFlatCategories] = useState<Category[]>([]); // For parent selection
   const [loading, setLoading] = useState(false);
-  const { addToast } = useToast();
+  const { show } = useToast();
 
   const [formData, setFormData] = useState({
     name_ar: '',
@@ -75,7 +75,7 @@ const ManageCategories: React.FC = () => {
       };
       setFlatCategories(flatten(res.data));
     } catch (err) {
-      addToast('فشل تحميل الأقسام', 'error');
+      show('فشل تحميل الأقسام', 'error');
     } finally {
       setLoading(false);
     }

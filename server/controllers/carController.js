@@ -49,3 +49,34 @@ export const deleteCar = async (req, res) => {
   await Car.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
 };
+
+export const searchCars = async (req, res) => {
+  const { q } = req.query;
+  if (!q) return res.status(400).json({ message: "Search query 'q' is required" });
+  try {
+    const cars = await Car.find({
+      $or: [
+        { title: { $regex: q, $options: "i" } },
+        { brand: { $regex: q, $options: "i" } },
+        { model: { $regex: q, $options: "i" } },
+        { description: { $regex: q, $options: "i" } }
+      ]
+    }).select("title brand model year price imageUrl images");
+    res.json(cars);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const reorderCars = async (req, res) => {
+  const { carId, newIndex } = req.body;
+  if (!carId || newIndex === undefined || newIndex < 0) {
+    return res.status(400).json({ message: "Invalid parameters" });
+  }
+  try {
+    await Car.findByIdAndUpdate(carId, { display_order: newIndex });
+    res.json({ message: "Order updated" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};

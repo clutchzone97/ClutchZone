@@ -14,12 +14,28 @@ api.interceptors.request.use((config) => {
   try {
     const token = localStorage.getItem("cz_token");
     if (token) {
-      config.headers = { ...(config.headers || {}), Authorization: `Bearer ${token}` };
+      if (!config.headers) config.headers = {} as any;
+      (config.headers as any).Authorization = `Bearer ${token}`;
     }
   } catch (err) {
     // ignore
   }
   return config;
 }, (err) => Promise.reject(err));
+
+api.interceptors.response.use((res) => res, (err) => {
+  try {
+    const status = err?.response?.status;
+    if (status === 401 || status === 403) {
+      localStorage.removeItem("cz_token");
+      // if (typeof window !== "undefined" && window.location?.hash?.includes("/admin")) {
+      //   window.location.hash = "#/login";
+      // }
+    }
+  } catch {
+    // ignore
+  }
+  return Promise.reject(err);
+});
 
 export default api;

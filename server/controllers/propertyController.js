@@ -46,3 +46,34 @@ export const deleteProperty = async (req, res) => {
   await Property.findByIdAndDelete(req.params.id);
   res.json({ message: "Deleted" });
 };
+
+export const searchProperties = async (req, res) => {
+  const { q } = req.query;
+  if (!q) return res.status(400).json({ message: "Search query 'q' is required" });
+  try {
+    const properties = await Property.find({
+      $or: [
+        { title: { $regex: q, $options: "i" } },
+        { type: { $regex: q, $options: "i" } },
+        { location: { $regex: q, $options: "i" } },
+        { description: { $regex: q, $options: "i" } }
+      ]
+    }).select("title type location price imageUrl images");
+    res.json(properties);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const reorderProperties = async (req, res) => {
+  const { propertyId, newIndex } = req.body;
+  if (!propertyId || newIndex === undefined || newIndex < 0) {
+    return res.status(400).json({ message: "Invalid parameters" });
+  }
+  try {
+    await Property.findByIdAndUpdate(propertyId, { display_order: newIndex });
+    res.json({ message: "Order updated" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};

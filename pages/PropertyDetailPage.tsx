@@ -21,6 +21,7 @@ interface PropertyDoc {
   baths?: number;
   features?: string[];
   images?: string[];
+  description?: string;
 }
 
 const PropertyDetailPage: React.FC = () => {

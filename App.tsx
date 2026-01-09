@@ -15,6 +15,7 @@ import AdminLayout from './components/layout/AdminLayout';
 import RequireAuth from './components/layout/RequireAuth';
 import SiteSettings from './pages/admin/SiteSettings';
 import AboutPage from './pages/AboutPage';
+import SellerAIChat from './components/ui/SellerAIChat';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="settings" element={<SiteSettings />} />
         </Route>
       </Routes>
+      <SellerAIChat />
     </HashRouter>
   );
 }

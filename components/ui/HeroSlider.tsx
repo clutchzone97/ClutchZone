@@ -56,7 +56,9 @@ const HeroSlider: React.FC<Props> = ({ images, heightClass = 'h-screen', interva
               return (
                 <span
                   key={idx}
-                  ref={(el) => (itemRefs.current[idx] = el)}
+                  ref={(el) => {
+                    itemRefs.current[idx] = el;
+                  }}
                   className={`rounded-full transition-all duration-200 ${isActive ? 'bg-white' : 'bg-white/50'}`}
                   style={{ width: isActive ? 26 : 10, height: 10 }}
                 />

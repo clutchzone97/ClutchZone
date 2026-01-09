@@ -17,6 +17,8 @@ interface CarDoc {
   transmission?: string;
   fuel?: string;
   images?: string[];
+  description?: string;
+  featured?: boolean;
 }
 
 const ManageCars: React.FC = () => {
@@ -58,11 +60,11 @@ const ManageCars: React.FC = () => {
 
   const handleEdit = async (car: CarDoc) => {
     const title = prompt('تعديل العنوان:', car.title) || car.title;
-    const make = prompt('تعديل الماركة:', car.make) || car.make;
+    const brand = prompt('تعديل الماركة:', car.brand) || car.brand;
     const yearStr = prompt('تعديل السنة:', String(car.year)) || String(car.year);
     const priceStr = prompt('تعديل السعر:', String(car.price)) || String(car.price);
     try {
-      const payload = { title, make, year: Number(yearStr), price: Number(priceStr) };
+      const payload = { title, brand, year: Number(yearStr), price: Number(priceStr) };
       const res = await api.put(`/cars/${car._id}`, payload);
       show('تم تعديل السيارة بنجاح', 'success');
       setCars((prev) => prev.map((c) => (c._id === car._id ? res.data : c)));

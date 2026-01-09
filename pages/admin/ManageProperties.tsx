@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { formatCurrency } from '../../utils/formatters';
-import { FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaPlus, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import api from '../../utils/api';
 import { useToast } from '../../components/ui/Toast';
 
@@ -15,6 +15,7 @@ interface PropertyDoc {
   area?: number;
   price: number;
   images?: string[];
+  display_order?: number;
 }
 
 type EditForm = {
@@ -98,6 +99,52 @@ const ManageProperties: React.FC = () => {
       setProperties((prev) => prev.filter((p) => p._id !== id));
     } catch {
       show('فشل حذف العقار', 'error');
+    }
+  };
+
+  const handleMove = async (index: number, direction: 'up' | 'down') => {
+    if (searchTerm) {
+      show('لا يمكن إعادة الترتيب أثناء البحث', 'error');
+      return;
+    }
+
+    const newProps = [...properties];
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= newProps.length) return;
+
+    const currentProp = newProps[index];
+    const swapProp = newProps[targetIndex];
+
+    newProps[index] = swapProp;
+    newProps[targetIndex] = currentProp;
+    setProperties(newProps);
+
+    try {
+      const orderA = (currentProp as any).display_order ?? 0;
+      const orderB = (swapProp as any).display_order ?? 0;
+      
+      let newOrderCurrent = orderB;
+      let newOrderSwap = orderA;
+      
+      if (orderA === orderB) {
+        newOrderCurrent = targetIndex;
+        newOrderSwap = index;
+      }
+
+      await Promise.all([
+        api.post('/properties/reorder', { propertyId: currentProp._id, newOrder: newOrderCurrent }),
+        api.post('/properties/reorder', { propertyId: swapProp._id, newOrder: newOrderSwap })
+      ]);
+      
+      (currentProp as any).display_order = newOrderCurrent;
+      (swapProp as any).display_order = newOrderSwap;
+      
+      const finalProps = [...newProps];
+      setProperties(finalProps);
+      
+    } catch (err) {
+      show('فشل تحديث الترتيب', 'error');
+      loadProperties();
     }
   };
 
@@ -245,8 +292,26 @@ const ManageProperties: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredProperties.map(property => (
+                {filteredProperties.map((property, index) => (
                   <tr key={property._id} className="bg-white border-b hover:bg-gray-50">
+                    <td className="px-6 py-4">
+                        <div className="flex flex-col space-y-1">
+                            <button 
+                                onClick={() => handleMove(index, 'up')} 
+                                disabled={index === 0 || !!searchTerm}
+                                className={`p-1 rounded ${index === 0 || !!searchTerm ? 'text-gray-300' : 'text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                <FaArrowUp size={12} />
+                            </button>
+                            <button 
+                                onClick={() => handleMove(index, 'down')} 
+                                disabled={index === filteredProperties.length - 1 || !!searchTerm}
+                                className={`p-1 rounded ${index === filteredProperties.length - 1 || !!searchTerm ? 'text-gray-300' : 'text-gray-600 hover:bg-gray-200'}`}
+                            >
+                                <FaArrowDown size={12} />
+                            </button>
+                        </div>
+                    </td>
                     <td className="px-6 py-4"><img src={(property.images && property.images[0]) || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='100'><rect fill='#eeeeee' width='100%' height='100%'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#777' font-size='12'>No Image</text></svg>"} alt={property.title || ''} className="w-16 h-10 object-cover rounded"/></td>
                     <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{property.title}</td>
                     <td className="px-6 py-4">{property.type}</td>

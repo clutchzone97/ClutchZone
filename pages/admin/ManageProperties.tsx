@@ -163,6 +163,16 @@ const ManageProperties: React.FC = () => {
         </button>
       </div>
 
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="بحث (العنوان، الموقع، الوصف)..."
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       {showAdd && (
         <div className="bg-white p-6 rounded-lg shadow-md mb-6">
           <form onSubmit={handleAddSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -224,7 +234,7 @@ const ManageProperties: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {properties.map(property => (
+                {filteredProperties.map(property => (
                   <tr key={property._id} className="bg-white border-b hover:bg-gray-50">
                     <td className="px-6 py-4"><img src={(property.images && property.images[0]) || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='100'><rect fill='#eeeeee' width='100%' height='100%'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#777' font-size='12'>No Image</text></svg>"} alt={property.title || ''} className="w-16 h-10 object-cover rounded"/></td>
                     <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{property.title}</td>

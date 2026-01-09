@@ -10,7 +10,7 @@ export const getCars = async (req, res) => {
   if (q) filter.model = { $regex: q, $options: "i" };
   if (typeof featured !== 'undefined') filter.featured = String(featured) === 'true';
 
-  const sortObj = {};
+  const sortObj = { display_order: 1, createdAt: -1 };
   if (sort === "newest") sortObj.createdAt = -1;
 
   const cars = await Car.find(filter).sort(sortObj);
@@ -56,7 +56,6 @@ export const searchCars = async (req, res) => {
   try {
     const cars = await Car.find({
       $or: [
-        { title: { $regex: q, $options: "i" } },
         { brand: { $regex: q, $options: "i" } },
         { model: { $regex: q, $options: "i" } },
         { description: { $regex: q, $options: "i" } }
@@ -69,12 +68,12 @@ export const searchCars = async (req, res) => {
 };
 
 export const reorderCars = async (req, res) => {
-  const { carId, newIndex } = req.body;
-  if (!carId || newIndex === undefined || newIndex < 0) {
+  const { carId, newOrder } = req.body;
+  if (!carId || newOrder === undefined || newOrder < 0) {
     return res.status(400).json({ message: "Invalid parameters" });
   }
   try {
-    await Car.findByIdAndUpdate(carId, { display_order: newIndex });
+    await Car.findByIdAndUpdate(carId, { display_order: newOrder });
     res.json({ message: "Order updated" });
   } catch (err) {
     res.status(500).json({ message: "Server error" });

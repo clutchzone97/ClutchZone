@@ -25,6 +25,7 @@ const ManageCars: React.FC = () => {
   const { show } = useToast();
   const [cars, setCars] = useState<CarDoc[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const loadCars = async () => {
     setLoading(true);
@@ -37,6 +38,16 @@ const ManageCars: React.FC = () => {
       setLoading(false);
     }
   };
+
+  const filteredCars = cars.filter(car => {
+    if (!searchTerm) return true;
+    const lower = searchTerm.toLowerCase();
+    return (
+      (car.brand?.toLowerCase() || '').includes(lower) ||
+      (car.model?.toLowerCase() || '').includes(lower) ||
+      (car.description?.toLowerCase() || '').includes(lower)
+    );
+  });
 
   useEffect(() => { loadCars(); }, []);
 
@@ -160,6 +171,16 @@ const ManageCars: React.FC = () => {
         </button>
       </div>
 
+      <div className="mb-6">
+        <input
+          type="text"
+          placeholder="بحث (الماركة، الموديل، الوصف)..."
+          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       {showAdd && (
         <div className="bg-white p-6 rounded-lg shadow-md mb-6">
           <form onSubmit={handleAddSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -219,7 +240,7 @@ const ManageCars: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {cars.map(car => (
+                {filteredCars.map((car) => (
                   <tr key={car._id} className="bg-white border-b hover:bg-gray-50">
                     <td className="px-6 py-4"><img src={(car.images && car.images[0]) || "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='100'><rect fill='#eeeeee' width='100%' height='100%'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='#777' font-size='12'>No Image</text></svg>"} alt={car.title || ''} className="w-16 h-10 object-cover rounded"/></td>
                     <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{car.title}</td>

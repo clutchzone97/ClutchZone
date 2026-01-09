@@ -10,7 +10,7 @@ export const getProperties = async (req, res) => {
   if (q) filter.title = { $regex: q, $options: "i" };
   if (typeof featured !== 'undefined') filter.featured = String(featured) === 'true';
 
-  const properties = await Property.find(filter).sort({ createdAt: -1 });
+  const properties = await Property.find(filter).sort({ display_order: 1, createdAt: -1 });
   res.json(properties);
 };
 
@@ -54,7 +54,6 @@ export const searchProperties = async (req, res) => {
     const properties = await Property.find({
       $or: [
         { title: { $regex: q, $options: "i" } },
-        { type: { $regex: q, $options: "i" } },
         { location: { $regex: q, $options: "i" } },
         { description: { $regex: q, $options: "i" } }
       ]
@@ -66,12 +65,12 @@ export const searchProperties = async (req, res) => {
 };
 
 export const reorderProperties = async (req, res) => {
-  const { propertyId, newIndex } = req.body;
-  if (!propertyId || newIndex === undefined || newIndex < 0) {
+  const { propertyId, newOrder } = req.body;
+  if (!propertyId || newOrder === undefined || newOrder < 0) {
     return res.status(400).json({ message: "Invalid parameters" });
   }
   try {
-    await Property.findByIdAndUpdate(propertyId, { display_order: newIndex });
+    await Property.findByIdAndUpdate(propertyId, { display_order: newOrder });
     res.json({ message: "Order updated" });
   } catch (err) {
     res.status(500).json({ message: "Server error" });

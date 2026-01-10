@@ -8,6 +8,7 @@ import api from '../utils/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
 import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 // تعريف بسيط لشكل البيانات القادمة من الـAPI
 interface CarDoc {
@@ -37,8 +38,8 @@ const CarsPage: React.FC = () => {
   const [minPrice, setMinPrice] = useState<number | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
   const [sort, setSort] = useState('newest');
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
-  const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
+  const isMobile = useMediaQuery('(max-width: 767px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pulse, setPulse] = useState(false);
   

@@ -11,6 +11,7 @@ import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
 import { useTranslation } from 'react-i18next';
 import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +19,7 @@ const HomePage: React.FC = () => {
   const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
   const { settings } = useSiteSettings();
   const isMobile = useMediaQuery('(max-width: 767px)');
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pulse, setPulse] = useState(false);
 

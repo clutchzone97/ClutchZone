@@ -19,6 +19,24 @@ const Header: React.FC = () => {
   const { settings } = useSiteSettings();
   const isRTL = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
   const [scrolled, setScrolled] = useState(false);
+  
+  // Detect mobile screen for header logic
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  // We can use a hook for better reactivity, but simple check works for initial render if window exists
+  // Better: use a state updated on resize or the existing useMediaQuery hook if imported.
+  // Since we don't have useMediaQuery imported in the original code, let's stick to CSS logic mainly, 
+  // but for the style prop override, we might need a small listener or just !important in CSS classes.
+  // Actually, let's use the 'md:' prefix in className to override inline styles if possible? 
+  // Inline styles usually win over classes unless !important is used.
+  // Let's use a cleaner approach: conditional style object.
+  
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobileScreen(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const bg = useMemo(() => {
     const hex = settings.headerBgColor || '#6B7280';
@@ -78,9 +96,32 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors ${scrolled ? 'text-dark dark:text-light shadow' : 'text-white'}`} style={{ backgroundColor: scrolled ? bg : 'transparent' }}>
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Logo />
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors 
+        ${isMobileScreen ? 'bg-[#111827]/90 backdrop-blur-md border-b border-gray-800' : ''} 
+        ${scrolled && !isMobileScreen ? 'text-dark dark:text-light shadow' : 'text-white'}`} 
+      style={{ backgroundColor: isMobileScreen ? undefined : (scrolled ? bg : 'transparent') }}
+    >
+      <div className="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center relative">
+        
+        {/* Mobile Left: Hamburger Menu */}
+        <div className="md:hidden">
+           <button
+            className="focus:outline-none p-1"
+            onClick={() => setMobileOpen((s) => !s)}
+            aria-label="فتح القائمة"
+            aria-expanded={mobileOpen}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
+            </svg>
+          </button>
+        </div>
+
+        {/* Logo: Center on Mobile (Absolute), Left on Desktop (Static) */}
+        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 md:static md:transform-none md:translate-y-0 md:translate-x-0">
+          <Logo />
+        </div>
         
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
@@ -101,20 +142,29 @@ const Header: React.FC = () => {
             ))}
           </nav>
         
-        <div className="hidden lg:block">
-          <LanguageSwitcher />
+        <div className="flex items-center gap-2">
+           {/* Mobile Right: Language Switcher */}
+           <div className="md:hidden scale-90 origin-right">
+             <LanguageSwitcher />
+           </div>
+
+           {/* Desktop Right: Language Switcher */}
+           <div className="hidden lg:block">
+             <LanguageSwitcher />
+           </div>
+
+           {/* Tablet Hamburger (Hidden on Mobile, Hidden on Desktop) */}
+           <button
+             className="hidden md:block lg:hidden focus:outline-none"
+             onClick={() => setMobileOpen((s) => !s)}
+             aria-label="فتح القائمة"
+             aria-expanded={mobileOpen}
+           >
+             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
+             </svg>
+           </button>
         </div>
-        
-          <button
-            className="lg:hidden focus:outline-none"
-            onClick={() => setMobileOpen((s) => !s)}
-            aria-label="فتح القائمة"
-            aria-expanded={mobileOpen}
-          >
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={mobileOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}></path>
-            </svg>
-          </button>
         
       </div>
 

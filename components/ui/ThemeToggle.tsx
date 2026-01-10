@@ -6,7 +6,7 @@ const ThemeToggle: React.FC = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-lg rounded-full border border-gray-200 dark:border-gray-700 transition-all duration-300 group hover:rounded-2xl">
+    <div className="hidden md:flex fixed bottom-4 right-4 z-50 flex-col gap-2 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur shadow-lg rounded-full border border-gray-200 dark:border-gray-700 transition-all duration-300 group hover:rounded-2xl">
       <button
         onClick={() => setTheme('light')}
         className={`p-2 rounded-full transition-colors ${theme === 'light' ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700'}`}

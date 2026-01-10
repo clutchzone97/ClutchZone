@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @config "./tailwind.config.js";
 
+/* Mobile-only padding to prevent content from being hidden behind the fixed header */
+@media (max-width: 768px) {
+  body {
+    padding-top: 64px;
+  }
+}
+
 html, body, #root {
   height: 100%;
   width: 100%;

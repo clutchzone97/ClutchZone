@@ -17,6 +17,7 @@ import RequireAuth from './components/layout/RequireAuth';
 import SiteSettings from './pages/admin/SiteSettings';
 import AboutPage from './pages/AboutPage';
 import SellerAIChat from './components/ui/SellerAIChat';
+import ThemeToggle from './components/ui/ThemeToggle';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         </Route>
       </Routes>
       <SellerAIChat />
+      <ThemeToggle />
     </HashRouter>
   );
 }

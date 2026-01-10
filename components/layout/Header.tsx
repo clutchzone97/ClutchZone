@@ -78,7 +78,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors ${scrolled ? 'text-dark shadow' : 'text-white'}`} style={{ backgroundColor: scrolled ? bg : 'transparent' }}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-colors ${scrolled ? 'text-dark dark:text-light shadow' : 'text-white'}`} style={{ backgroundColor: scrolled ? bg : 'transparent' }}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Logo />
         
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               <Link
                 key={link.key}
                 to={link.path}
-                className={`transition-all duration-200 rounded-full px-4 py-2 ${scrolled ? 'text-gray-800' : 'text-white'} active:translate-y-[1px]`}
+                className={`transition-all duration-200 rounded-full px-4 py-2 ${scrolled ? 'text-gray-800 dark:text-white' : 'text-white'} active:translate-y-[1px]`}
                 style={{
                   color: settings.headerNavTextColor || undefined,
                   WebkitTextStroke: `${(settings.headerNavStrokeWidth ?? 1)}px ${settings.headerNavStrokeColor || settings.primaryColor || '#1D4ED8'}`,

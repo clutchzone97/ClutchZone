@@ -1,13 +1,12 @@
 
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { FaTachometerAlt, FaCar, FaBuilding, FaClipboardList, FaSignOutAlt, FaUserCircle, FaHome, FaCog, FaList } from 'react-icons/fa';
+import { FaTachometerAlt, FaCar, FaBuilding, FaClipboardList, FaSignOutAlt, FaUserCircle, FaHome, FaCog } from 'react-icons/fa';
 import { ToastProvider } from '../ui/Toast';
 
 const AdminLayout: React.FC = () => {
     const navItems = [
         { name: 'لوحة التحكم', path: '/admin/dashboard', icon: FaTachometerAlt },
-        { name: 'إدارة الأقسام', path: '/admin/categories', icon: FaList },
         { name: 'إدارة السيارات', path: '/admin/cars', icon: FaCar },
         { name: 'إدارة العقارات', path: '/admin/properties', icon: FaBuilding },
         { name: 'إعدادات الموقع', path: '/admin/settings', icon: FaCog },

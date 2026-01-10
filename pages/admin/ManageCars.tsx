@@ -160,6 +160,9 @@ const ManageCars: React.FC = () => {
         const finalCars = [...newCars];
         setCars(finalCars);
         
+        // Reload data from server to ensure consistency
+        setTimeout(() => loadCars(), 100);
+        
     } catch (err) {
         show('فشل تحديث الترتيب', 'error');
         loadCars();

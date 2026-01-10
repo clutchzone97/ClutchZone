@@ -10,7 +10,7 @@ import LoginPage from './pages/LoginPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageCars from './pages/admin/ManageCars';
 import ManageProperties from './pages/admin/ManageProperties';
-import ManageCategories from './pages/admin/ManageCategories';
+
 import ManageOrders from './pages/admin/ManageOrders';
 import AdminLayout from './components/layout/AdminLayout';
 import RequireAuth from './components/layout/RequireAuth';
@@ -32,7 +32,6 @@ function App() {
         
         <Route path="/admin" element={<RequireAuth><AdminLayout /></RequireAuth>}>
           <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="categories" element={<ManageCategories />} />
           <Route path="cars" element={<ManageCars />} />
           <Route path="properties" element={<ManageProperties />} />
           <Route path="orders" element={<ManageOrders />} />

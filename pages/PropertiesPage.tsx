@@ -59,6 +59,10 @@ const PropertiesPage: React.FC = () => {
           if (minP !== undefined) (params as any).minPrice = minP;
           if (maxP !== undefined) (params as any).maxPrice = maxP;
         }
+        if (sort === 'newest') params.sort = 'newest';
+        if (sort === 'priceAsc') params.sort = 'price_asc';
+        if (sort === 'priceDesc') params.sort = 'price_desc';
+        if (sort === 'oldest') params.sort = 'oldest';
         const res = await api.get('/properties', { params });
         let data = res.data || [];
         if (minPrice !== null || maxPrice !== null) {
@@ -203,16 +207,7 @@ const PropertiesPage: React.FC = () => {
             {t('results_properties', { count: properties.length })}
            </div>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-             {([...properties].sort((a:any,b:any)=>{
-               if (sort === 'priceAsc') return (a.price||0) - (b.price||0);
-               if (sort === 'priceDesc') return (b.price||0) - (a.price||0);
-               if (sort === 'oldest') return new Date(a.createdAt as any).getTime() - new Date(b.createdAt as any).getTime();
-               // Default: display_order asc, then createdAt desc
-               const orderA = a.display_order ?? 999999;
-               const orderB = b.display_order ?? 999999;
-               if (orderA !== orderB) return orderA - orderB;
-               return new Date(b.createdAt as any).getTime() - new Date(a.createdAt as any).getTime();
-             })).map(property => (
+             {properties.map(property => (
                <PropertyCard key={property._id} property={property as any} />
              ))}
            </div>

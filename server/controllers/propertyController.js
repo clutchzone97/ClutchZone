@@ -1,7 +1,7 @@
 import Property from "../models/Property.js";
 
 export const getProperties = async (req, res) => {
-  const { type, purpose, minPrice, maxPrice, q, featured } = req.query;
+  const { type, purpose, minPrice, maxPrice, q, featured, sort } = req.query;
   const filter = {};
   if (type) filter.type = type;
   if (purpose) filter.purpose = purpose;
@@ -10,7 +10,21 @@ export const getProperties = async (req, res) => {
   if (q) filter.title = { $regex: q, $options: "i" };
   if (typeof featured !== 'undefined') filter.featured = String(featured) === 'true';
 
-  const properties = await Property.find(filter).sort({ display_order: 1, createdAt: -1 });
+  const sortObj = { display_order: 1, createdAt: -1 };
+  if (sort === "newest") {
+    // Default
+  } else if (sort === "oldest") {
+    delete sortObj.display_order;
+    sortObj.createdAt = 1;
+  } else if (sort === "price_asc") {
+    delete sortObj.display_order;
+    sortObj.price = 1;
+  } else if (sort === "price_desc") {
+    delete sortObj.display_order;
+    sortObj.price = -1;
+  }
+
+  const properties = await Property.find(filter).sort(sortObj);
   res.json(properties);
 };
 
@@ -57,7 +71,7 @@ export const searchProperties = async (req, res) => {
         { location: { $regex: q, $options: "i" } },
         { description: { $regex: q, $options: "i" } }
       ]
-    }).select("title type location price imageUrl images");
+    }).select("title type location price imageUrl images display_order").sort({ display_order: 1 });
     res.json(properties);
   } catch (err) {
     res.status(500).json({ message: "Server error" });

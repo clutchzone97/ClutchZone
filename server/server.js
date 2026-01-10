@@ -11,10 +11,8 @@ import carRoutes from "./routes/carRoutes.js";
 import propertyRoutes from "./routes/propertyRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
 import settingsRoutes from "./routes/settingsRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
-import localUploadRoutes from "./routes/localUploadRoutes.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import Admin from "./models/Admin.js";
 
@@ -82,10 +80,8 @@ app.use("/api/cars", carRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admins", adminRoutes);
-app.use("/api/categories", categoryRoutes);
 app.use("/api/settings", settingsRoutes);
 app.use("/api/upload", uploadRoutes);
-app.use("/api/upload-local", localUploadRoutes);
 
 // Serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));

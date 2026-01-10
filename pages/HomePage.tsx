@@ -17,8 +17,7 @@ const HomePage: React.FC = () => {
   const [featuredCars, setFeaturedCars] = useState<any[]>([]);
   const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
   const { settings } = useSiteSettings();
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
-  const isDesktop = typeof window !== 'undefined' ? window.innerWidth >= 1024 : false;
+  const isMobile = useMediaQuery('(max-width: 767px)');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pulse, setPulse] = useState(false);
 
@@ -84,7 +83,7 @@ const HomePage: React.FC = () => {
       <div className="hide-hero-dots-mobile">
       <style>{`.hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-3, .hide-hero-dots-mobile .pointer-events-none.absolute.inset-x-0.bottom-5 { display: none !important; }`}</style>
       <HeroSlider images={slides} heightClass="h-screen" intervalMs={settings.heroSlideIntervalMs ?? 3000}>
-        <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-24 md:pt-28">
+        <div className="flex flex-col justify-center items-center text-center px-4 h-full pt-28">
           <h1
             className="text-4xl md:text-6xl font-bold mb-4"
             style={{
@@ -105,31 +104,34 @@ const HomePage: React.FC = () => {
             {t('home_subtitle')}
           </p>
 
-          <div className="space-x-reverse space-x-4">
-            <Link to="/cars" className="btn-primary-safe bg-primary text-white font-bold rounded-md hover:bg-primary-dark">{t('browse_cars')}</Link>
-            <Link to="/properties" className="btn-primary-safe bg-secondary text-white font-bold rounded-md hover:bg-secondary-dark">{t('browse_properties')}</Link>
-          </div>
+          <div className="flex flex-col items-center gap-3 z-20 lg:hidden">
+              {[
+                { key: 'nav_home', path: '/' },
+                { key: 'nav_cars', path: '/cars' },
+                { key: 'nav_properties', path: '/properties' },
+              ].map((link) => (
+                <Link
+                  key={link.key}
+                  to={link.path}
+                  className="block text-lg font-semibold transition-all duration-200 rounded-full px-6 py-2.5"
+                  style={{
+                    color: settings.headerNavTextColor || undefined,
+                    WebkitTextStroke: `${(settings.headerNavStrokeWidth ?? 1)}px ${settings.headerNavStrokeColor || settings.primaryColor || '#1D4ED8'}`,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    boxShadow: '0 4px 0 rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.35)',
+                  }}
+                >
+                  {t(link.key)}
+                </Link>
+              ))}
+            </div>
+
           <div className="mt-8 max-w-3xl text-white/90 text-center text-base">
             <p>{t('hero_p1')}</p>
             <p className="mt-2">{t('hero_p2')}</p>
             <p className="mt-2">{t('hero_p3')}</p>
           </div>
-          {isMobile && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
-              <div
-                className={`rounded-full transition-all`}
-                style={{
-                  width: pulse ? 10 : 6,
-                  height: pulse ? 10 : 6,
-                  backgroundColor: pulse ? '#00AEEF' : 'rgba(255,255,255,0.5)',
-                  transform: pulse ? 'scale(1.0)' : 'scale(0.9)',
-                  opacity: pulse ? 1 : 0.7,
-                  transition: 'all 0.25s ease-in-out'
-                }}
-              />
-            </div>
-          )}
-          {isDesktop && (
+          
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
               {slides.map((_, i) => (
                 <div
@@ -145,7 +147,7 @@ const HomePage: React.FC = () => {
                 />
               ))}
             </div>
-          )}
+          
         </div>
       </HeroSlider>
       </div>

@@ -142,6 +142,9 @@ const ManageProperties: React.FC = () => {
       const finalProps = [...newProps];
       setProperties(finalProps);
       
+      // Reload data from server to ensure consistency
+      setTimeout(() => loadProperties(), 100);
+      
     } catch (err) {
       show('فشل تحديث الترتيب', 'error');
       loadProperties();

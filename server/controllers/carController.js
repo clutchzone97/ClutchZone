@@ -11,7 +11,18 @@ export const getCars = async (req, res) => {
   if (typeof featured !== 'undefined') filter.featured = String(featured) === 'true';
 
   const sortObj = { display_order: 1, createdAt: -1 };
-  if (sort === "newest") sortObj.createdAt = -1;
+  if (sort === "newest") {
+    // Default: Manual order first, then newest
+  } else if (sort === "oldest") {
+    delete sortObj.display_order;
+    sortObj.createdAt = 1;
+  } else if (sort === "price_asc") {
+    delete sortObj.display_order;
+    sortObj.price = 1;
+  } else if (sort === "price_desc") {
+    delete sortObj.display_order;
+    sortObj.price = -1;
+  }
 
   const cars = await Car.find(filter).sort(sortObj);
   res.json(cars);
@@ -60,7 +71,7 @@ export const searchCars = async (req, res) => {
         { model: { $regex: q, $options: "i" } },
         { description: { $regex: q, $options: "i" } }
       ]
-    }).select("title brand model year price imageUrl images");
+    }).select("title brand model year price imageUrl images display_order").sort({ display_order: 1 });
     res.json(cars);
   } catch (err) {
     res.status(500).json({ message: "Server error" });

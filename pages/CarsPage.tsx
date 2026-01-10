@@ -60,6 +60,9 @@ const CarsPage: React.FC = () => {
           if (maxP !== undefined) params.maxPrice = maxP;
         }
         if (sort === 'newest') params.sort = 'newest';
+        if (sort === 'priceAsc') params.sort = 'price_asc';
+        if (sort === 'priceDesc') params.sort = 'price_desc';
+        if (sort === 'oldest') params.sort = 'oldest';
         const res = await api.get('/cars', { params });
         let data = res.data || [];
         if (minPrice !== null || maxPrice !== null) {
@@ -199,12 +202,7 @@ const CarsPage: React.FC = () => {
               {t('results_cars', { count: cars.length })}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {([...cars].sort((a:any,b:any)=>{
-                if (sort === 'priceAsc') return (a.price||0) - (b.price||0);
-                if (sort === 'priceDesc') return (b.price||0) - (a.price||0);
-                if (sort === 'oldest') return new Date(a.createdAt as any).getTime() - new Date(b.createdAt as any).getTime();
-                return new Date(b.createdAt as any).getTime() - new Date(a.createdAt as any).getTime();
-              })).map(car => (
+              {cars.map(car => (
                 <CarCard key={car._id} car={car as any} />
               ))}
             </div>

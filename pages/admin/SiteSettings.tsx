@@ -53,7 +53,7 @@ const defaultSettings: SettingsDoc = {
   phone: '',
   email: '',
   address: '',
-  socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '' },
+  socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '', tiktok: '' },
   heroBackgroundUrl: '',
   heroSlideIntervalMs: 3000,
   heroTitle: 'منزلك وسيارتك الجديدة هنا',

@@ -54,7 +54,7 @@ const defaultSettings: SiteSettings = {
   phone: '',
   email: '',
   address: '',
-  socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '', tiktok: '' },
+  socialLinks: { facebook: '', instagram: '', twitter: '', youtube: '', tiktok: '', snapchat: '' },
   heroBackgroundUrl: '',
   carsHeroUrl: '',
   propertiesHeroUrl: '',

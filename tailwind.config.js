@@ -1,5 +1,3 @@
-import type { Config } from 'tailwindcss'
-
 export default {
   content: [
     './index.html',
@@ -17,8 +15,8 @@ export default {
         secondary: '#10B981',
         'secondary-dark': '#059669',
         dark: '#111827',
-        light: '#f9fafb',
+        light: '#f8f9fa',
       },
     },
   },
-} satisfies Config
+}

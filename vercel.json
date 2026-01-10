@@ -3,6 +3,6 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|favicon.ico|sw.js|.*\\.png|.*\\.json).*)", "destination": "/index.html" }
   ]
 }

@@ -12,9 +12,25 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024, files: 10 },
 });
 
+const uploadMiddleware = (req, res, next) => {
+  upload.array("images", 10)(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).json({ message: `خطأ في رفع الملفات: ${err.message}` });
+    } else if (err) {
+      return res.status(500).json({ message: `خطأ غير معروف في الرفع: ${err.message}` });
+    }
+    next();
+  });
+};
+
 // POST /api/upload  -> returns { urls: string[] }
-router.post("/", protect, upload.array("images", 10), async (req, res) => {
+router.post("/", protect, uploadMiddleware, async (req, res) => {
   try {
+    if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+       console.error("Missing Cloudinary credentials");
+       return res.status(500).json({ message: "خطأ في إعدادات الخادم: بيانات Cloudinary مفقودة" });
+    }
+
     const files = req.files || [];
     if (!files.length) return res.status(400).json({ message: "لا توجد ملفات مرفوعة" });
     
@@ -52,7 +68,7 @@ router.post("/", protect, upload.array("images", 10), async (req, res) => {
     res.json({ urls });
   } catch (err) {
     console.error("Upload error:", err);
-    res.status(500).json({ message: "فشل رفع الصور" });
+    res.status(500).json({ message: `فشل رفع الصور: ${err.message}` });
   }
 });
 

@@ -22,7 +22,7 @@ import ThemeToggle from './components/ui/ThemeToggle';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cars" element={<CarsPage />} />

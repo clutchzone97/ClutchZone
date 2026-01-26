@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import cloudinary from "../config/cloudinary.js";
 import { protect } from "../middleware/authMiddleware.js";
+import { slugify } from "../utils/slugify.js";
 
 const router = express.Router();
 
@@ -16,47 +17,31 @@ router.post("/", protect, upload.array("images", 10), async (req, res) => {
   try {
     const files = req.files || [];
     if (!files.length) return res.status(400).json({ message: "لا توجد ملفات مرفوعة" });
+    
+    const title = req.query.title || req.body.title || "upload";
+    const baseSlug = slugify(title);
 
     const urls = await Promise.all(
       files.map(
-        (file) =>
+        (file, index) =>
           new Promise((resolve, reject) => {
+            // Create a unique public_id: slug + index + short-hash to avoid collisions if multiple files
+            const uniqueSuffix = Date.now().toString().slice(-4) + Math.round(Math.random() * 100);
+            const publicId = `${baseSlug}-${index + 1}-${uniqueSuffix}`;
+            
             const stream = cloudinary.uploader.upload_stream(
               {
                 folder: "clutchzone/uploads",
+                public_id: publicId,
                 resource_type: "image",
                 overwrite: false,
+                format: "auto",     // Automatically optimize format (webp/avif)
+                quality: "auto",    // Automatically optimize quality
               },
               (error, result) => {
                 if (error) return reject(error);
-                const wmId = process.env.CLOUDINARY_WATERMARK_ID;
-                if (wmId) {
-                  const wmOpacity = parseInt(process.env.CLOUDINARY_WATERMARK_OPACITY || "60", 10);
-                  const wmGravity = process.env.CLOUDINARY_WATERMARK_GRAVITY || "south_east";
-                  const wmWidthRatio = parseFloat(process.env.CLOUDINARY_WATERMARK_WIDTH_RATIO || "0.18");
-                  const wmX = parseInt(process.env.CLOUDINARY_WATERMARK_X || "15", 10);
-                  const wmY = parseInt(process.env.CLOUDINARY_WATERMARK_Y || "15", 10);
-
-                  const transformedUrl = cloudinary.url(result.public_id, {
-                    secure: true,
-                    sign_url: true,
-                    type: "upload",
-                    transformation: [
-                      {
-                        overlay: { public_id: wmId, type: "upload" },
-                        gravity: wmGravity,
-                        opacity: wmOpacity,
-                        flags: "relative",
-                        width: wmWidthRatio,
-                        x: wmX,
-                        y: wmY,
-                      },
-                    ],
-                  });
-                  resolve(transformedUrl);
-                } else {
-                  resolve(result.secure_url);
-                }
+                // Return secure_url directly as transformation is handled by auto:format/quality
+                resolve(result.secure_url);
               }
             );
             stream.end(file.buffer);

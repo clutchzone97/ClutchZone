@@ -121,7 +121,7 @@ const PropertyDetailPage: React.FC = () => {
             {/* Image Gallery */}
             <div>
               {mainImage ? (
-                <img src={mainImage} alt={property.title} className="w-full h-96 object-cover rounded-lg mb-4"/>
+                <img src={mainImage} alt={`${property.title} - ClutchZone`} className="w-full h-96 object-cover rounded-lg mb-4"/>
               ) : (
                 <div className="w-full h-96 bg-gray-200 rounded-lg mb-4 flex items-center justify-center text-gray-500">{t('no_images')}</div>
               )}
@@ -131,7 +131,7 @@ const PropertyDetailPage: React.FC = () => {
                     <img 
                       key={`${img}-${index}`} 
                       src={img} 
-                      alt={`${property.title} thumbnail ${index + 1}`} 
+                      alt={`${property.title} thumbnail ${index + 1} - ClutchZone`} 
                       className={`w-full h-24 object-cover rounded-md cursor-pointer ${mainImage === img ? 'border-2 border-secondary' : ''}`}
                       onClick={() => setMainImage(img)}
                     />

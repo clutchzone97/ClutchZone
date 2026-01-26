@@ -1,17 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "clutchzone.co"
-        }
-      ],
-      "destination": "https://www.clutchzone.co/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",

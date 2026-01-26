@@ -28,9 +28,10 @@ api.interceptors.response.use((res) => res, (err) => {
     const status = err?.response?.status;
     if (status === 401 || status === 403) {
       localStorage.removeItem("cz_token");
-      // if (typeof window !== "undefined" && window.location?.hash?.includes("/admin")) {
-      //   window.location.hash = "#/login";
-      // }
+      // Redirect to login if needed, or handle via router
+      if (typeof window !== "undefined" && !window.location.pathname.includes("/login")) {
+         window.location.href = "/login";
+      }
     }
   } catch {
     // ignore

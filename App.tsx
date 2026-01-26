@@ -1,12 +1,13 @@
 
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CarsPage from './pages/CarsPage';
 import PropertiesPage from './pages/PropertiesPage';
 import CarDetailPage from './pages/CarDetailPage';
 import PropertyDetailPage from './pages/PropertyDetailPage';
 import LoginPage from './pages/LoginPage';
+import NotFoundPage from './pages/NotFoundPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageCars from './pages/admin/ManageCars';
 import ManageProperties from './pages/admin/ManageProperties';
@@ -18,12 +19,10 @@ import SiteSettings from './pages/admin/SiteSettings';
 import AboutPage from './pages/AboutPage';
 import SellerAIChat from './components/ui/SellerAIChat';
 import ThemeToggle from './components/ui/ThemeToggle';
-import LegacyHashRedirect from './components/LegacyHashRedirect';
 
 function App() {
   return (
     <BrowserRouter>
-      <LegacyHashRedirect />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cars" element={<CarsPage />} />

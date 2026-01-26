@@ -34,6 +34,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         
         <Route path="/admin" element={<RequireAuth><AdminLayout /></RequireAuth>}>
+          <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="cars" element={<ManageCars />} />
           <Route path="properties" element={<ManageProperties />} />

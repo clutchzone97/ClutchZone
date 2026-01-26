@@ -12,6 +12,7 @@ const propertySchema = new mongoose.Schema({
   baths: Number,
   features: [String],
   images: [String],
+  slug: { type: String, unique: true, index: true },
   featured: { type: Boolean, default: false },
   available: { type: Boolean, default: true },
   display_order: { type: Number, default: 0 }

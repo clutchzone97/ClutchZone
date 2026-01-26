@@ -12,6 +12,7 @@ const carSchema = new mongoose.Schema({
   km: Number,
   description: String,
   images: [String],
+  slug: { type: String, unique: true, index: true },
   featured: { type: Boolean, default: false },
   available: { type: Boolean, default: true },
   display_order: { type: Number, default: 0 }

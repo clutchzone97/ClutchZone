@@ -20,6 +20,7 @@ interface CarDoc {
   images?: string[];
   imageUrl?: string; // دعم قديم
   featured?: boolean;
+  slug?: string;
 }
 
 interface CarCardProps {
@@ -59,7 +60,7 @@ const CarCard: React.FC<CarCardProps> = ({ car }) => {
             <span>{car.fuel || '-'}</span>
           </div>
         </div>
-        <Link to={`/cars/${car._id}`} className="block w-full text-center bg-primary text-white py-2 rounded-md hover:bg-primary-dark transition-colors duration-300">
+        <Link to={`/cars/${car.slug || car._id}`} className="block w-full text-center bg-primary text-white py-2 rounded-md hover:bg-primary-dark transition-colors duration-300">
           عرض التفاصيل
         </Link>
       </div>

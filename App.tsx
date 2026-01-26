@@ -18,16 +18,18 @@ import SiteSettings from './pages/admin/SiteSettings';
 import AboutPage from './pages/AboutPage';
 import SellerAIChat from './components/ui/SellerAIChat';
 import ThemeToggle from './components/ui/ThemeToggle';
+import LegacyHashRedirect from './components/LegacyHashRedirect';
 
 function App() {
   return (
     <BrowserRouter>
+      <LegacyHashRedirect />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cars" element={<CarsPage />} />
-        <Route path="/cars/:id" element={<CarDetailPage />} />
+        <Route path="/cars/:slug" element={<CarDetailPage />} />
         <Route path="/properties" element={<PropertiesPage />} />
-        <Route path="/properties/:id" element={<PropertyDetailPage />} />
+        <Route path="/properties/:slug" element={<PropertyDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
         

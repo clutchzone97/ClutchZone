@@ -1,5 +1,6 @@
 import Car from "../models/Car.js";
 import cloudinary from "../config/cloudinary.js";
+import { createUniqueSlug } from "../utils/slugHelper.js";
 
 export const getCars = async (req, res) => {
   const { brand, minPrice, maxPrice, sort, q, featured } = req.query;
@@ -31,8 +32,20 @@ export const getCars = async (req, res) => {
 export const getCar = async (req, res) => {
   try {
     const { id } = req.params;
-    if (!id || !id.match(/^[a-fA-F0-9]{24}$/)) return res.status(400).json({ message: "Invalid id" });
-    const car = await Car.findById(id);
+    let car;
+    
+    // Check if id is a valid MongoDB ObjectId
+    if (id.match(/^[a-fA-F0-9]{24}$/)) {
+      car = await Car.findById(id);
+      // If not found by ID, try slug (edge case where slug is 24 hex chars, unlikely but possible)
+      if (!car) {
+        car = await Car.findOne({ slug: id });
+      }
+    } else {
+      // It's a slug
+      car = await Car.findOne({ slug: id });
+    }
+
     if (!car) return res.status(404).json({ message: "Car not found" });
     res.json(car);
   } catch (err) {
@@ -41,19 +54,51 @@ export const getCar = async (req, res) => {
 };
 
 export const createCar = async (req, res) => {
-  const data = req.body;
-  const images = Array.isArray(data.images) ? data.images.filter((u) => typeof u === "string" && u.trim()) : [];
-  if (images.length < 1 || images.length > 10) {
-    return res.status(400).json({ message: "يجب إرفاق بين 1 و 10 صور" });
+  try {
+    const data = req.body;
+    const images = Array.isArray(data.images) ? data.images.filter((u) => typeof u === "string" && u.trim()) : [];
+    if (images.length < 1 || images.length > 10) {
+      return res.status(400).json({ message: "يجب إرفاق بين 1 و 10 صور" });
+    }
+    data.images = images;
+    
+    // Generate unique slug
+    data.slug = await createUniqueSlug(Car, data.title || 'car');
+    
+    const car = await Car.create(data);
+    res.status(201).json(car);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Server error" });
   }
-  data.images = images;
-  const car = await Car.create(data);
-  res.status(201).json(car);
 };
 
 export const updateCar = async (req, res) => {
-  const car = await Car.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.json(car);
+  try {
+    const data = req.body;
+    // If title is changing, update slug
+    if (data.title) {
+      data.slug = await createUniqueSlug(Car, data.title, req.params.id);
+    }
+    
+    const car = await Car.findByIdAndUpdate(req.params.id, data, { new: true });
+    res.json(car);
+  } catch (err) {
+    res.status(500).json({ message: err.message || "Server error" });
+  }
+};
+
+export const resolveCarSlug = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id || !id.match(/^[a-fA-F0-9]{24}$/)) return res.status(400).json({ message: "Invalid id" });
+    
+    const car = await Car.findById(id).select('slug');
+    if (!car) return res.status(404).json({ message: "Car not found" });
+    
+    res.json({ slug: car.slug });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
 export const deleteCar = async (req, res) => {

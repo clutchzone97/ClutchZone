@@ -24,7 +24,7 @@ interface CarDoc {
 }
 
 const CarDetailPage: React.FC = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { t } = useTranslation();
   const [car, setCar] = useState<CarDoc | null>(null);
   const [loading, setLoading] = useState(true);
@@ -34,11 +34,11 @@ const CarDetailPage: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
-      if (!id) return;
+      if (!slug) return;
       setLoading(true);
       setError(null);
       try {
-        const res = await api.get(`/cars/${id}`);
+        const res = await api.get(`/cars/${slug}`);
         const c: CarDoc = res.data;
         setCar(c);
         const firstImg = (c.images && c.images[0]) || undefined;
@@ -50,7 +50,7 @@ const CarDetailPage: React.FC = () => {
       }
     };
     load();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -89,7 +89,7 @@ const CarDetailPage: React.FC = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": `https://clutchzone.co/cars/${car._id}`,
+      "url": `https://clutchzone.co/cars/${slug}`,
       "priceCurrency": "EGP",
       "price": car.price,
       "itemCondition": "https://schema.org/UsedCondition",
@@ -111,7 +111,7 @@ const CarDetailPage: React.FC = () => {
       <SEO 
         title={seoTitle}
         description={seoDesc}
-        canonical={`/cars/${car._id}`}
+        canonical={`/cars/${slug}`}
         image={car.images?.[0]}
         type="product"
         structuredData={productSchema}

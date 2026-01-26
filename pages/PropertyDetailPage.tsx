@@ -25,7 +25,7 @@ interface PropertyDoc {
 }
 
 const PropertyDetailPage: React.FC = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { t } = useTranslation();
   const [property, setProperty] = useState<PropertyDoc | null>(null);
   const [loading, setLoading] = useState(true);
@@ -35,11 +35,11 @@ const PropertyDetailPage: React.FC = () => {
 
   useEffect(() => {
     const load = async () => {
-      if (!id) return;
+      if (!slug) return;
       setLoading(true);
       setError(null);
       try {
-        const res = await api.get(`/properties/${id}`);
+        const res = await api.get(`/properties/${slug}`);
         const p: PropertyDoc = res.data;
         setProperty(p);
         const firstImg = (p.images && p.images[0]) || undefined;
@@ -51,7 +51,7 @@ const PropertyDetailPage: React.FC = () => {
       }
     };
     load();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -92,7 +92,7 @@ const PropertyDetailPage: React.FC = () => {
       "@type": "Offer",
       "priceCurrency": "EGP",
       "price": property.price,
-      "url": `https://clutchzone.co/properties/${property._id}`,
+      "url": `https://clutchzone.co/properties/${slug}`,
       "availability": "https://schema.org/InStock"
     }
   };
@@ -109,9 +109,9 @@ const PropertyDetailPage: React.FC = () => {
       <SEO 
         title={seoTitle}
         description={seoDesc}
-        canonical={`/properties/${property._id}`}
+        canonical={`/properties/${slug}`}
         image={property.images?.[0]}
-        type="website"
+        type="product"
         structuredData={realEstateSchema}
       />
       <Header />

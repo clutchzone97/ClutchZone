@@ -56,7 +56,7 @@ async function generateSitemap() {
       
       sitemap += `
   <url>
-    <loc>${SITE_URL}/cars/${car._id}</loc>
+    <loc>${SITE_URL}/cars/${car.slug || car._id}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>${imagesXml}
   </url>`;
@@ -77,7 +77,7 @@ async function generateSitemap() {
 
       sitemap += `
   <url>
-    <loc>${SITE_URL}/properties/${prop._id}</loc>
+    <loc>${SITE_URL}/properties/${prop.slug || prop._id}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>${imagesXml}
   </url>`;

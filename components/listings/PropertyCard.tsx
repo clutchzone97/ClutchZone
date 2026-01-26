@@ -19,6 +19,7 @@ interface PropertyDoc {
   images?: string[];
   imageUrl?: string;
   featured?: boolean;
+  slug?: string;
 }
 
 interface PropertyCardProps {
@@ -62,7 +63,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             <span>{property.baths ?? '-'} حمامات</span>
           </div>
         </div>
-        <Link to={`/properties/${property._id}`} className="block w-full text-center bg-secondary text-white py-2 rounded-md hover:bg-secondary-dark transition-colors duration-300">
+        <Link to={`/properties/${property.slug || property._id}`} className="block w-full text-center bg-secondary text-white py-2 rounded-md hover:bg-secondary-dark transition-colors duration-300">
           عرض التفاصيل
         </Link>
       </div>

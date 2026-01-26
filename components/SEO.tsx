@@ -26,7 +26,7 @@ const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteTitle = 'Clutch Zone';
   const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
-  const baseUrl = 'https://clutchzone.co';
+  const baseUrl = 'https://www.clutchzone.co';
   const fullCanonical = canonical 
     ? (canonical.startsWith('http') ? canonical : `${baseUrl}${canonical}`)
     : undefined;

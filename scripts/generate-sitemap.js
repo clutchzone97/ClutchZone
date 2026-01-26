@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const API_BASE_URL = 'https://clutchzone-backend.onrender.com/api';
-const SITE_URL = 'https://clutchzone.co';
+const SITE_URL = 'https://www.clutchzone.co';
 
 const STATIC_ROUTES = [
   '/',

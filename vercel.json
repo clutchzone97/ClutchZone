@@ -4,18 +4,21 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
-          "value": "www.clutchzone.co"
+          "value": "clutchzone.co"
         }
       ],
-      "destination": "https://clutchzone.co/:path*",
+      "destination": "https://www.clutchzone.co/$1",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/((?!assets/|favicon.ico|sw.js|.*\\.png|.*\\.json|robots.txt|sitemap.xml).*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

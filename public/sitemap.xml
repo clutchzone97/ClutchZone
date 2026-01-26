@@ -1,153 +1,1090 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://clutchzone.co/</loc>
+    <loc>https://www.clutchzone.co/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars</loc>
+    <loc>https://www.clutchzone.co/cars</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clutchzone.co/properties</loc>
+    <loc>https://www.clutchzone.co/properties</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clutchzone.co/about</loc>
+    <loc>https://www.clutchzone.co/about</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clutchzone.co/login</loc>
+    <loc>https://www.clutchzone.co/login</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/6974bca038a549be74348be9</loc>
+    <loc>https://www.clutchzone.co/cars/6974bca038a549be74348be9</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258143/clutchzone/uploads/zbmq5lujzytnzzv3z3xa.png</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/vicnfr2uslxyzi3drsoj.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/tt4d9ri21gruwfujyhdu.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/brethsefjoeae4yrwwo3.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/n7zmmv0w0114jr65hlzq.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/r8hzlyapi2z7kgby4rvj.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/xpwka8oc9xsqnebba87n.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/hndv3k2appzesgtwbrxx.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/oljueahthylvphx0lttf.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769258142/clutchzone/uploads/fpzmo46cnu8zidka402s.jpg</image:loc>
+      <image:title>Mercedes SL55 AMG</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/69749d1038a549be74348897</loc>
+    <loc>https://www.clutchzone.co/cars/69749d1038a549be74348897</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/pngcuy2beig2xbacztzf.jpg</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/iedsycx7n0f4nwzwfiyq.jpg</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/j1vdlsb7xhxgo3zvfgnh.jpg</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/v2ebybzw54ur4q2e1z6d.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/rzppezqhme4asufx958e.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/pbsibknwio6yodapf3w6.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/hwwk8zfunnl5at5f2auw.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250063/clutchzone/uploads/ywbw3mwykvjxirwkrww7.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/qjz15ykvts6pmrob3ekp.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1769250062/clutchzone/uploads/mwa6nki260prearufviq.png</image:loc>
+      <image:title>Toyota Land Cruiser 2021 V8 5.7 Used</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c78e334f4cc063809d117</loc>
+    <loc>https://www.clutchzone.co/cars/691c78e334f4cc063809d117</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/sglsftowqz2sq7opolov.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/zdhcnixj1ovc1bysm78x.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/smlnh7cn4gs9jkagwvix.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/li3yauwzbsnappdlde9u.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/onjtm4kuwrdvsimer3fw.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/cswi9xlnw85b3kdz84su.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/rf1rw6mcguji4nueejzt.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473633/clutchzone/uploads/im7hivbgqwpllsc3xege.jpg</image:loc>
+      <image:title>Mercedes G 500 Amg </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c787034f4cc063809d113</loc>
+    <loc>https://www.clutchzone.co/cars/691c787034f4cc063809d113</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/tysa1tepjaa3uzfcp0ob.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/qzv3pe7enohmrehp5zcb.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/cxtapmkss99e38a5d60o.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/aekkbuw2tv4y39ja2wwg.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/cscnfoprbwqwovg6fhqw.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/e6xfssnkghivgypnszwg.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/jnkdx19bg5oodkkmhazq.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/olmhglhinempokessa5y.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473518/clutchzone/uploads/cd6hktldutvskrpueq1c.jpg</image:loc>
+      <image:title>Porsche Cayenne Coupe </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c72f434f4cc063809d0ee</loc>
+    <loc>https://www.clutchzone.co/cars/691c72f434f4cc063809d0ee</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/fmlchotizml1cimqmeua.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/lrszyyf6lwrxkzodr31j.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/pxjhv0crjgjpqmdq9gjc.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/e9sx4gbhm0pchlakqcpv.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/gdfriilsajddriz1gjeq.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/c2nirklucrc9hkox0hlo.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/skakujmznutlzkm7iobn.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/ztulqyffztvhi8rntwhv.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472114/clutchzone/uploads/ngke8eceugbfhqar6jfb.jpg</image:loc>
+      <image:title>Mercedes GLS 580 </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c745534f4cc063809d0f6</loc>
+    <loc>https://www.clutchzone.co/cars/691c745534f4cc063809d0f6</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/pv9godwqfmocudogg4q1.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/lgoy4vciavy4zozthdrz.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/tr84ohk1vv27mxghpfmo.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472466/clutchzone/uploads/nxcbxcrxaogmsuc0j0p3.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/bijcrntqg6ebrn3859ux.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/wpltcl8ij8fhd4alcxzx.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/wgn943ieg7ixivj6mief.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/wpqgi5xhqs8d3luekbw3.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/eb3pypgiujretfaf8rso.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763472467/clutchzone/uploads/cht40y41y51x6f4hwzlh.jpg</image:loc>
+      <image:title>Mercedes GLS 580 grey</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c60329d88a1647713d84e</loc>
+    <loc>https://www.clutchzone.co/cars/691c60329d88a1647713d84e</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/ypcnstcbeqlykuibwaxy.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/yvtqwapwoz0zn9g3ybrr.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/da9cfkltlougt5imsvmn.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/wao4spzwqzfa2n4nlkxj.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/vj4j8kgpbdmgjqomcdou.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/urnvq3fdyafh2z3hqwuu.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/yc13s0gd5vifizlx9swa.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/redxlyfrzcgi4p1hqxzn.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/xslgf9z8nmpjouwiz5pf.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763467312/clutchzone/uploads/dnt6vxrakiuiffts8o0o.jpg</image:loc>
+      <image:title>Mercedes EQS500 4-Matic </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c5a969d88a1647713d815</loc>
+    <loc>https://www.clutchzone.co/cars/691c5a969d88a1647713d815</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/ulceoj1vtjwbbx2bo3cc.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/b3jxwv6kwq9apbfujrk3.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/bo1krpuoliqdkrgplyof.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/ccgqcigapav2rlw3svqc.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/de5vwvzp4vzrrtn5sg0n.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/qf9wun4codijebnu22qm.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/dhkeedwkzm4yfocsig2x.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/y4oxowxxwwqtj3bjtjb4.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/zuo96raj5b4rfntgcwdi.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465876/clutchzone/uploads/vomsjdlvlz0fm8xoz5jj.jpg</image:loc>
+      <image:title>Mercedes GLE53 AMG</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c77db34f4cc063809d10f</loc>
+    <loc>https://www.clutchzone.co/cars/691c77db34f4cc063809d10f</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/urvbqs5ljybyuacubupp.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/s3bbw0zxzktmv7zzbc0p.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/nqjydjdpbvll6ja1bmea.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/wimvocfui0fjj0apoylg.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/cagq0adew8uoispqzqta.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/bx2zmb085enx7aoqak0v.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/ptblufexgf2b6wihul4h.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473369/clutchzone/uploads/dl0fxggrkhfkivhcslfj.jpg</image:loc>
+      <image:title>Mercedes GLE 450 </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c774a34f4cc063809d10b</loc>
+    <loc>https://www.clutchzone.co/cars/691c774a34f4cc063809d10b</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/vg1n6ufdaslmdnc6v0k8.png</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/lgmfslalqkzdunyaqt4u.png</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/l3xnexlzeyesemkkhdaw.png</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/ogbe2omlwdj7fg7xam6g.png</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/ilvxlnzg0pr25yjcvveg.jpg</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/fpuxfyk5wrbep2qhtsmm.jpg</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/gzcsgdqa8rgorfpsbaxc.jpg</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473224/clutchzone/uploads/gbq75zlyel5rkvmt3jem.jpg</image:loc>
+      <image:title>Porsche  Macan T </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/694586d5e65ed89d7ea0f5e6</loc>
+    <loc>https://www.clutchzone.co/cars/694586d5e65ed89d7ea0f5e6</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/smdzlyevd3jcoalx3yop.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/iuypoai6rmaoivsn2xos.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/wbo9mwrl65pkguhzbndh.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/dweslg7bbl0ziwnmueyu.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/ik9ixkj73ygziefw4avb.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/lfo6uftb70gdmb3hume1.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/pr7rqy2dfr6gclujnjsd.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/zvyakhcatftx6rwnoqzj.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164177/clutchzone/uploads/pdvaohny9xbcdd91eyex.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164178/clutchzone/uploads/bfliuwkhh0b5o1uknyyl.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 300 4MATIC AMG Night Package – موديل 2026 Zero | Fully Loaded</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c57da9d88a1647713d806</loc>
+    <loc>https://www.clutchzone.co/cars/691c57da9d88a1647713d806</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/kyspcy222xjxkhvsi1hv.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/zxjr24rki97afqzb1hng.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/w7iol5hxvp7c2enlxohn.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/tlqefjpxk7eemwooymyw.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465176/clutchzone/uploads/iruk9kotffewqcmmg5fr.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/yldwmamgsnt4jukawgzv.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/qqi1okk4xjzswsk4wdjw.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465175/clutchzone/uploads/ti3kttqrn1jpnnmnt1m2.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465176/clutchzone/uploads/em0yc86bzedykhzmjxd8.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465176/clutchzone/uploads/szpx8argaadcfkzij9vu.jpg</image:loc>
+      <image:title>LAND ROVER DEFENDER</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/69458396e65ed89d7ea0f57e</loc>
+    <loc>https://www.clutchzone.co/cars/69458396e65ed89d7ea0f57e</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/o3lktzpi5zxi5vw3u8w7.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163348/clutchzone/uploads/npjvqpxxwrkeuvuc29cd.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/w7iahaziify9tqihko6w.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/gt87y6rko05kg2ty5q9k.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/og0e69wj4fwgl7v1xwme.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/b8uvbdwmuawpyjxdqql3.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/pfzt9levcgzfrdyr70qj.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/pkijs0egaqfftllu7hq8.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/hclzawx2d1pvdahyum2q.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766163347/clutchzone/uploads/gg7su0p3avfvmjqk22pq.jpg</image:loc>
+      <image:title>Mercedes-Benz GLC 200 AMG SUV – موديل 2025</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/69458641e65ed89d7ea0f5d1</loc>
+    <loc>https://www.clutchzone.co/cars/69458641e65ed89d7ea0f5d1</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/ag5kytcpq1snwemylfss.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164032/clutchzone/uploads/wqfuydz83nspjzw130ed.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/vlzp4rctsdqvewt5fllt.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/hk8qdzee6tcxxhnp6exg.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/si2zfpfvws2zk3vrc4pz.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/sck4bxxmgttixh1z9ihd.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/oajxaukvg3jrqvubk8ez.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164032/clutchzone/uploads/nnyobzzb7jfut9quw8q6.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1766164031/clutchzone/uploads/vibnl5jnuyyqh7indqt0.jpg</image:loc>
+      <image:title>🆕 Mercedes-Benz C200 AMG Night Package – موديل 2022</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c767c34f4cc063809d107</loc>
+    <loc>https://www.clutchzone.co/cars/691c767c34f4cc063809d107</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/ipvd82jlq2gvjciwwquk.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/lpuhdy1v4cku3f9s8xwp.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/zrnntj5kvvh0rsfrreyc.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/rm5i0i0270ptv0iexsmi.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/q2jokmshqfaxqnrhc5vk.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/yknfssaa7e40uumw9f68.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/nb9bmjcok4fnzy4yo8ep.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/x3br8oetzg0hnsa1ebao.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/ojtt3wprfba0euwqmnzg.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763473017/clutchzone/uploads/hpsakcc3fnfhdyme1mky.jpg</image:loc>
+      <image:title>Mercedes C180 Avantgarde Plus</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c5e6c9d88a1647713d835</loc>
+    <loc>https://www.clutchzone.co/cars/691c5e6c9d88a1647713d835</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/svvxnx4vpbv8stjbtlqs.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/ctny0nkb4felr3sdamye.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/b14j3egulks8qrbt8sbi.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/yarjybpt7zsuekyvui44.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/rt0cqvqgibgixxxh8zny.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/xleecjubqdmacralas3e.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/gsjlinigi2ouopqvmdek.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/cdcgt1gqqbwbagfoxa9g.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/jfdeevetjol8jvantxcr.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466858/clutchzone/uploads/f1nlr27f8qzvqpedbilk.jpg</image:loc>
+      <image:title>Mercedes EQE500 SUV</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c5bf29d88a1647713d81e</loc>
+    <loc>https://www.clutchzone.co/cars/691c5bf29d88a1647713d81e</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/fm8ngkrbs8ofnxd8tiu5.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/oyxegigktoalaspocq4j.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/nx6xjbe9hllu6xddzpuh.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/ksyvlmvwppvhiichvdkc.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/wykxsrqosaoavifs7qpf.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/viqm3mguqzilgdamr936.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/awqz99yum4k6gni23j11.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/qirbosuemm5sl9s5stxk.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/pt7rdkbfef3rgvg4nwzn.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466224/clutchzone/uploads/uzziypxjtbo0f5zx87mn.jpg</image:loc>
+      <image:title>BYD SONG Plus grey</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c5cbd9d88a1647713d824</loc>
+    <loc>https://www.clutchzone.co/cars/691c5cbd9d88a1647713d824</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/d5ud6edf0bgthiozrcrm.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/plc3qpqsdrg2spfchxwt.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466428/clutchzone/uploads/n5yvjwij6l5a97xyuzjp.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/zsupwdsxsmhiforpsq1w.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/d3nz1xzzt80ha3ucaivg.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/wmw6e49hwyq7gvzuow67.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/b0oq7yeqq77esmzly3vo.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/sjmlpvxomomz3patj1rn.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763466427/clutchzone/uploads/vpbi3kovkxbbdwu5fvkn.jpg</image:loc>
+      <image:title>Mercedes C180 AMG</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c59f69d88a1647713d811</loc>
+    <loc>https://www.clutchzone.co/cars/691c59f69d88a1647713d811</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/gtuhfcc4vkd6cxhmneiu.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/ty2swryjaxggkefzlm0t.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/tdk0dox8mgfgajsavftj.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/txqaoroshkkna1itlzbk.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/n1wkdbcy2brfgrwatxun.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/fietkkllgxxac9ofjvvo.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/txfdda5g0jp7esc4dr6j.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/qsws5mta3uwn3tqagelb.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/oqk2n3oqc7hnq0jyrpmf.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763465717/clutchzone/uploads/bbkj6smrufhy6yvcd9sc.jpg</image:loc>
+      <image:title>ZEEKR X7 </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c38998782e51e661123b8</loc>
+    <loc>https://www.clutchzone.co/cars/691c38998782e51e661123b8</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/f9h1yixc10pzraenyqs4.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/bp77ocalls0eo2foatxp.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/gafrofklp0pd3dowmjhd.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/w0gpuqiljbzuftudqkeu.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/qctozolosezjzohuihm9.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/mnlokgp79twfjh0404gp.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/vg0nrf2nos6k3zefpwul.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/a7uryck30eflqmlowf8t.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/qyohusi50wqmzkccr4tu.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763457176/clutchzone/uploads/ftyllqhiwrrcj0dfsn3s.jpg</image:loc>
+      <image:title>BYD TANG L</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/cars/691c341d8782e51e661123ad</loc>
+    <loc>https://www.clutchzone.co/cars/691c341d8782e51e661123ad</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/udsffxzdhhglsvoff1tn.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/mszjdsutx4s0muhaccrb.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/riiehnldvnwm1wf6lrd8.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/flhylqqxpqy9izvo3ks9.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/qqjfcxmlhco8tey5hknm.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/wrycpgelogt9iqrsg2et.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763456027/clutchzone/uploads/akrnjcwvhrpgtw080ws7.jpg</image:loc>
+      <image:title>leon cupra 2026</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/properties/691b9c3ecfef6332b6e20964</loc>
+    <loc>https://www.clutchzone.co/properties/691b9c3ecfef6332b6e20964</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/tryf7cznietmx3etdkph.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/q86wjus2rcxmoz4bx97z.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/cnjhrhdm2uwyan8vodkw.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/jhantimt95m83srtmo0a.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417148/clutchzone/uploads/bexfqrktkdvdymbkbqou.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417148/clutchzone/uploads/vimuvbd0yguaa727ze6p.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/y9ad4rivitekhkwza65p.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/w0za2u5gmuuviccgaznn.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/lfgia9fwmhvcockr4yxs.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763417147/clutchzone/uploads/vgcjaykhpjb54ctysls3.jpg</image:loc>
+      <image:title>محل ميراج</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/properties/695c3fc4f5612276f1ec2e1a</loc>
+    <loc>https://www.clutchzone.co/properties/695c3fc4f5612276f1ec2e1a</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/mm7v8vknydewcmutm8gb.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/ikqdsvgiohfh9tmgr2zm.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/j7ailsqkrigdsr3ieruc.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/kace1gc7flxreuikh5fl.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/ehar4gh6x9mmpp30einc.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/hsutcjg5flql9kbkhqz0.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/ohfcrjnsiq4owqtxcwex.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/xkacqi780x9x41q8c4pd.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1767653313/clutchzone/uploads/hdg3zjrjngboxxqyp3af.jpg</image:loc>
+      <image:title>Property</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/properties/691c2a228ac992821465c659</loc>
+    <loc>https://www.clutchzone.co/properties/691c2a228ac992821465c659</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/ydq1kiflrjncpfj8dnww.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453471/clutchzone/uploads/vnzpvvbyyupbgg17b6qf.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453471/clutchzone/uploads/ggau7fjp64jlksmhzk9s.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/n3dutty5beeklhuyh1eh.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/c0mannh7vhkqw7zox2ml.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/pebymf2uzl4oui9ldgwt.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/ql4sxjzvkycrrklobfoj.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/ybtzdtfivmwzjylgfqzy.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/jzaeepvctca9ezclkxtf.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763453472/clutchzone/uploads/lxffnx8b5wayeibakalg.jpg</image:loc>
+      <image:title>دوبلكس الشروق 2 </image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://clutchzone.co/properties/691c26e58ac992821465c637</loc>
+    <loc>https://www.clutchzone.co/properties/691c26e58ac992821465c637</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/wpmxmz0qv3x3gfhh67zf.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/doaubmkfxtoqeq0ycby5.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/bgibzttimf2y0dpqhug5.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/t08ygj0s4r0ujtwtwave.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/n5jqyr7dz3rrhd2nuczk.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/vfqdylxwagofijfb9yph.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/vcvw0kbum6vaojrhv3r3.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dd5eyktfo/image/upload/v1763452644/clutchzone/uploads/jbunmodg821kslor2yp0.jpg</image:loc>
+      <image:title>عيادة بيڤيرلي هيلز</image:title>
+    </image:image>
   </url>
 </urlset>

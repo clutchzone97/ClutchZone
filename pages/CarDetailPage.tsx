@@ -6,8 +6,8 @@ import Footer from '../components/layout/Footer';
 import api from '../utils/api';
 import { formatCurrency, formatNumber } from '../utils/formatters';
 import PurchaseRequestModal from '../components/orders/PurchaseRequestModal';
-import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 interface CarDoc {
   _id: string;
@@ -52,15 +52,6 @@ const CarDetailPage: React.FC = () => {
     load();
   }, [id]);
 
-  useEffect(() => {
-    if (!car) return;
-    const displayTitle = car.title || `${car.brand || ''} ${car.model || ''}`.trim();
-    const title = `${displayTitle} | سيارات في مصر`;
-    const desc = `سيارة ${displayTitle} ${car.year ? `موديل ${car.year}` : ''} ${typeof car.price === 'number' ? `بسعر ${formatCurrency(car.price)}` : ''}. عروض موجهة للسوق المصري.`.trim();
-    const img = (car.images && car.images[0]) || undefined;
-    setPageSEO({ title, description: desc, canonicalUrl: canonicalForHashRouter('https://www.clutchzone.co'), image: img });
-  }, [car]);
-
   if (loading) {
     return (
       <div className="bg-light min-h-screen">
@@ -83,6 +74,28 @@ const CarDetailPage: React.FC = () => {
 
   const displayTitle = car.title || `${car.brand || ''} ${car.model || ''}`.trim();
   const gallery = (car.images && car.images.length > 0) ? car.images : [];
+  const seoTitle = `${displayTitle} | سيارات للبيع في مصر`;
+  const seoDesc = `سيارة ${displayTitle} ${car.year ? `موديل ${car.year}` : ''} ${typeof car.price === 'number' ? `بسعر ${formatCurrency(car.price)}` : ''}. ${car.description ? car.description.substring(0, 150) : ''}`.trim();
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": displayTitle,
+    "image": car.images || [],
+    "description": car.description,
+    "brand": {
+      "@type": "Brand",
+      "name": car.brand
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://clutchzone.co/cars/${car._id}`,
+      "priceCurrency": "EGP",
+      "price": car.price,
+      "itemCondition": "https://schema.org/UsedCondition",
+      "availability": "https://schema.org/InStock"
+    }
+  };
 
   const specs = [
     { label: t('spec_brand'), value: car.brand || '-' },
@@ -95,6 +108,14 @@ const CarDetailPage: React.FC = () => {
 
   return (
     <div className="bg-light">
+      <SEO 
+        title={seoTitle}
+        description={seoDesc}
+        canonical={`/cars/${car._id}`}
+        image={car.images?.[0]}
+        type="product"
+        structuredData={productSchema}
+      />
       <Header />
       <div className="container mx-auto px-4 py-24">
         <div className="bg-white p-6 rounded-lg shadow-lg">

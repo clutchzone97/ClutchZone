@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaLock } from 'react-icons/fa';
 import api from '../utils/api';
+import SEO from '../components/SEO';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -34,6 +35,12 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-light">
+      <SEO 
+        title="تسجيل الدخول"
+        description="تسجيل الدخول للوحة تحكم Clutch Zone."
+        canonical="/login"
+        noindex={true}
+      />
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <div className="flex items-center mb-6">
           <FaLock className="text-primary text-2xl me-2" />

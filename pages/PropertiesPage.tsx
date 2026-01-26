@@ -8,6 +8,7 @@ import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import SEO from '../components/SEO';
 
 interface PropertyDoc {
   _id: string;
@@ -111,6 +112,11 @@ const PropertiesPage: React.FC = () => {
   
   return (
     <div className="bg-light">
+      <SEO 
+        title="عقارات للبيع في مصر | Clutch Zone"
+        description="ابحث عن منزلك الجديد، شقق، فيلات، وأراضي للبيع في مصر. عروض عقارية مميزة في جميع المحافظات."
+        canonical="/properties"
+      />
       <Header />
       
       <div className="hide-hero-dots-mobile">

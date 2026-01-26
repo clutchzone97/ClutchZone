@@ -9,6 +9,7 @@ import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+import SEO from '../components/SEO';
 
 // تعريف بسيط لشكل البيانات القادمة من الـAPI
 interface CarDoc {
@@ -111,6 +112,11 @@ const CarsPage: React.FC = () => {
   
   return (
     <div className="bg-light">
+      <SEO 
+        title="سيارات للبيع في مصر | Clutch Zone"
+        description="تصفح مجموعة واسعة من السيارات الجديدة والمستعملة للبيع في مصر. أسعار تنافسية ومواصفات مفصلة."
+        canonical="/cars"
+      />
       <Header />
       
       <div className="hide-hero-dots-mobile">

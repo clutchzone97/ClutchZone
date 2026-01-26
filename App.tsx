@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CarsPage from './pages/CarsPage';
 import PropertiesPage from './pages/PropertiesPage';
@@ -21,7 +21,7 @@ import ThemeToggle from './components/ui/ThemeToggle';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cars" element={<CarsPage />} />
@@ -41,7 +41,7 @@ function App() {
       </Routes>
       <SellerAIChat />
       <ThemeToggle />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

@@ -10,7 +10,7 @@ import api from '../utils/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
 import HeroSlider from '../components/ui/HeroSlider';
 import { useTranslation } from 'react-i18next';
-import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
+import SEO from '../components/SEO';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const HomePage: React.FC = () => {
@@ -38,11 +38,6 @@ const HomePage: React.FC = () => {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    setPageSEO({
-      title: 'Clutch Zone | سوق السيارات والعقارات في مصر',
-      description: 'منصة مصرية موثوقة لشراء وبيع السيارات والعقارات. اكتشف أفضل العروض بأسعار تنافسية وخدمة دعم متميزة للمستخدمين في مصر.',
-      canonicalUrl: canonicalForHashRouter('https://www.clutchzone.co')
-    });
     if (!slides.length) return;
     const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 3000);
     return () => clearInterval(t);
@@ -76,8 +71,27 @@ const HomePage: React.FC = () => {
     load();
   }, []);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Clutch Zone",
+    "url": "https://clutchzone.co",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://clutchzone.co/cars?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
     <div className="bg-light">
+      <SEO 
+        title="سوق السيارات والعقارات في مصر"
+        description="منصة مصرية موثوقة لشراء وبيع السيارات والعقارات. اكتشف أفضل العروض بأسعار تنافسية وخدمة دعم متميزة للمستخدمين في مصر."
+        canonical="/"
+        keywords="سيارات للبيع في مصر, عقارات للبيع في مصر, شقق للبيع, سيارات مستعملة"
+        structuredData={structuredData}
+      />
       <WakeServerOverlay />
       <Header />
 

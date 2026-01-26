@@ -1,6 +1,7 @@
 // E:\97\index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './src/i18n';
 import { SiteSettingsProvider } from './context/SiteSettingsContext';
@@ -14,11 +15,13 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <SiteSettingsProvider>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </SiteSettingsProvider>
+    <HelmetProvider>
+      <SiteSettingsProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </SiteSettingsProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
 

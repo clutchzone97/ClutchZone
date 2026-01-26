@@ -6,8 +6,8 @@ import Footer from '../components/layout/Footer';
 import api from '../utils/api';
 import { formatCurrency, formatNumber } from '../utils/formatters';
 import PurchaseRequestModal from '../components/orders/PurchaseRequestModal';
-import { setPageSEO, canonicalForHashRouter } from '../utils/seo';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 interface PropertyDoc {
   _id: string;
@@ -53,17 +53,6 @@ const PropertyDetailPage: React.FC = () => {
     load();
   }, [id]);
 
-  useEffect(() => {
-    if (!property) return;
-    const title = `${property.title} | عقارات في مصر`;
-    const featureSnippet = (property.features && property.features.length > 0) ? `، مميزات: ${property.features.slice(0,3).join('، ')}` : '';
-    const priceSnippet = typeof property.price === 'number' ? `، ضمن نطاق سعر ${formatCurrency(property.price)}` : '';
-    const loc = property.location ? `في ${property.location}` : 'في مصر';
-    const desc = `${property.title} ${loc}${priceSnippet}${featureSnippet}. عقار موجه للمشترين في السوق المصري.`;
-    const img = (property.images && property.images[0]) || undefined;
-    setPageSEO({ title, description: desc, canonicalUrl: canonicalForHashRouter('https://www.clutchzone.co'), image: img });
-  }, [property]);
-
   if (loading) {
     return (
       <div className="bg-light min-h-screen">
@@ -87,6 +76,27 @@ const PropertyDetailPage: React.FC = () => {
   const statusColor = property.purpose === 'للبيع' ? 'bg-secondary' : 'bg-yellow-500';
   const gallery = (property.images && property.images.length > 0) ? property.images : [];
 
+  const seoTitle = `${property.title} | عقارات للبيع في مصر`;
+  const featureSnippet = (property.features && property.features.length > 0) ? `، مميزات: ${property.features.slice(0,3).join('، ')}` : '';
+  const priceSnippet = typeof property.price === 'number' ? `، بسعر ${formatCurrency(property.price)}` : '';
+  const loc = property.location ? `في ${property.location}` : 'في مصر';
+  const seoDesc = `${property.title} ${loc}${priceSnippet}${featureSnippet}. عقار موجه للمشترين في السوق المصري.`;
+
+  const realEstateSchema = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": property.title,
+    "image": property.images || [],
+    "description": property.description,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EGP",
+      "price": property.price,
+      "url": `https://clutchzone.co/properties/${property._id}`,
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
   const specs = [
     { label: t('spec_property_type'), value: property.type || '-' },
     { label: t('spec_purpose'), value: property.purpose || '-' },
@@ -96,6 +106,14 @@ const PropertyDetailPage: React.FC = () => {
 
   return (
     <div className="bg-light">
+      <SEO 
+        title={seoTitle}
+        description={seoDesc}
+        canonical={`/properties/${property._id}`}
+        image={property.images?.[0]}
+        type="website"
+        structuredData={realEstateSchema}
+      />
       <Header />
       <div className="container mx-auto px-4 py-24">
         <div className="bg-white p-6 rounded-lg shadow-lg">

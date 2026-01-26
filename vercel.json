@@ -2,7 +2,20 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.clutchzone.co"
+        }
+      ],
+      "destination": "https://clutchzone.co/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/((?!assets/|favicon.ico|sw.js|.*\\.png|.*\\.json).*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|favicon.ico|sw.js|.*\\.png|.*\\.json|robots.txt|sitemap.xml).*)", "destination": "/index.html" }
   ]
 }

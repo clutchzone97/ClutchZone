@@ -40,6 +40,7 @@ function App() {
           <Route path="orders" element={<ManageOrders />} />
           <Route path="settings" element={<SiteSettings />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <SellerAIChat />
       <ThemeToggle />

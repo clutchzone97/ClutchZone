@@ -23,6 +23,22 @@ const uploadMiddleware = (req, res, next) => {
   });
 };
 
+// Diagnostics: Check environment/config readiness without exposing secrets
+router.get("/status", (req, res) => {
+  const hasCloudName = !!process.env.CLOUDINARY_CLOUD_NAME;
+  const hasApiKey = !!process.env.CLOUDINARY_API_KEY;
+  const hasApiSecret = !!process.env.CLOUDINARY_API_SECRET;
+  res.json({
+    cloudinary: {
+      cloud_name_set: hasCloudName,
+      api_key_set: hasApiKey,
+      api_secret_set: hasApiSecret,
+    },
+    multerLimits: { fileSize: 10 * 1024 * 1024, files: 10 },
+    requiresAuth: true,
+  });
+});
+
 // POST /api/upload  -> returns { urls: string[] }
 router.post("/", protect, uploadMiddleware, async (req, res) => {
   try {

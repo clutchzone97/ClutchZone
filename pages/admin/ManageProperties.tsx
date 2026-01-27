@@ -193,10 +193,9 @@ const ManageProperties: React.FC = () => {
       }
       let images: string[] = [];
       const fd = new FormData();
-      selected.forEach(f => fd.append('images', f));
-      // Pass title for SEO-friendly filename generation
-      const uploadQuery = form.title ? `?title=${encodeURIComponent(form.title)}` : '';
-      const up = await api.post(`/upload${uploadQuery}`, fd, { timeout: 60000 });
+      selected.forEach(f => fd.append('image', f));
+      fd.append('title', form.title || 'Untitled Property');
+      const up = await api.post(`/upload`, fd, { timeout: 60000 });
       images = up.data.urls || [];
       const payload = { ...form, price: Number(form.price), images };
       const res = await api.post('/properties', payload, { timeout: 60000 });

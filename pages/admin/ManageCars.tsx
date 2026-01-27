@@ -214,10 +214,9 @@ const ManageCars: React.FC = () => {
       }
       let images: string[] = [];
       const fd = new FormData();
-      selected.forEach(f => fd.append('images', f));
-      // Pass title for SEO-friendly filename generation
-      const uploadQuery = form.title ? `?title=${encodeURIComponent(form.title)}` : '';
-      const up = await api.post(`/upload${uploadQuery}`, fd, { timeout: 60000 });
+      selected.forEach(f => fd.append('image', f));
+      fd.append('title', form.title || 'Untitled Car');
+      const up = await api.post(`/upload`, fd, { timeout: 60000 });
       images = up.data.urls || [];
       const payload = { ...form, year: Number(form.year), price: Number(form.price), km: Number(form.km), images };
       const res = await api.post('/cars', payload, { timeout: 60000 });

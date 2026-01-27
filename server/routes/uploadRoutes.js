@@ -13,7 +13,7 @@ const upload = multer({
 });
 
 const uploadMiddleware = (req, res, next) => {
-  upload.array("images", 10)(req, res, (err) => {
+  upload.array("image", 10)(req, res, (err) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ message: `خطأ في رفع الملفات: ${err.message}` });
     } else if (err) {
@@ -48,11 +48,16 @@ router.post("/", protect, uploadMiddleware, async (req, res) => {
     }
 
     const files = req.files || [];
-    if (!files.length) return res.status(400).json({ message: "لا توجد ملفات مرفوعة" });
+    if (!files.length) {
+       // Check if a single file was uploaded just in case (though we use array('image'))
+       if (req.file) files.push(req.file);
+       else return res.status(400).json({ message: "Image file is required" });
+    }
     
-    const title = req.query.title || req.body.title;
+    // Title validation (now from body)
+    const title = req.body.title;
     if (!title || !String(title).trim()) {
-      return res.status(400).json({ message: "عنوان الإعلان مطلوب" });
+      return res.status(400).json({ message: "Title is required" });
     }
     const baseSlug = slugify(title);
 
@@ -60,7 +65,11 @@ router.post("/", protect, uploadMiddleware, async (req, res) => {
       files.map(
         (file, index) =>
           new Promise((resolve, reject) => {
-            const publicId = `${baseSlug}-${index + 1}`;
+            // SEO-friendly filename: title-slug-index
+            // We use the slugified title as the public_id base.
+            // Cloudinary will handle the extension if we don't include it in public_id, 
+            // but we want readable names.
+            const publicId = `${baseSlug}-${Date.now()}-${index + 1}`;
             
             const stream = cloudinary.uploader.upload_stream(
               {

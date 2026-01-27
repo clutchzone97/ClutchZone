@@ -189,15 +189,15 @@ const SiteSettings: React.FC = () => {
       
       if (logoFile) {
         const fd = new FormData();
-        fd.append('image', logoFile);
         fd.append('title', 'Site Logo');
+        fd.append('image', logoFile);
         const up = await api.post('/upload', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
         logoUrl = (up.data.urls && up.data.urls[0]) || logoUrl;
       }
       if (footerLogoFile) {
         const fd2 = new FormData();
-        fd2.append('image', footerLogoFile);
         fd2.append('title', 'Footer Logo');
+        fd2.append('image', footerLogoFile);
         const up2 = await api.post('/upload', fd2, { headers: { 'Content-Type': 'multipart/form-data' } });
         footerLogoUrl = (up2.data.urls && up2.data.urls[0]) || footerLogoUrl;
       }

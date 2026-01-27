@@ -56,6 +56,8 @@ router.post("/", protect, uploadMiddleware, async (req, res) => {
     
     // Title validation (now from body)
     const title = req.body.title;
+    console.log("Upload request - Files:", files.length, "Title:", title, "Body:", req.body);
+    
     if (!title || !String(title).trim()) {
       return res.status(400).json({ message: "Title is required" });
     }

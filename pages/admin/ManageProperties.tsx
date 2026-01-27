@@ -193,8 +193,9 @@ const ManageProperties: React.FC = () => {
       }
       let images: string[] = [];
       const fd = new FormData();
-      selected.forEach(f => fd.append('image', f));
+      // Append title FIRST to ensure it's available before files in some server configurations
       fd.append('title', form.title || 'Untitled Property');
+      selected.forEach(f => fd.append('image', f));
       const up = await api.post(`/upload`, fd, { timeout: 60000 });
       images = up.data.urls || [];
       const payload = { ...form, price: Number(form.price), images };

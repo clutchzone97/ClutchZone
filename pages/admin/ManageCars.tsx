@@ -214,8 +214,9 @@ const ManageCars: React.FC = () => {
       }
       let images: string[] = [];
       const fd = new FormData();
-      selected.forEach(f => fd.append('image', f));
+      // Append title FIRST to ensure it's available before files in some server configurations
       fd.append('title', form.title || 'Untitled Car');
+      selected.forEach(f => fd.append('image', f));
       const up = await api.post(`/upload`, fd, { timeout: 60000 });
       images = up.data.urls || [];
       const payload = { ...form, year: Number(form.year), price: Number(form.price), km: Number(form.km), images };

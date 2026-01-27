@@ -56,21 +56,19 @@ await ensureDefaultAdmin();
 
 const app = express();
 const allowedOrigins = [
-  "https://www.clutchzone.co",
+  "http://localhost:5173",
   "https://clutchzone.co",
-  "https://clutch-zone.vercel.app",
-  "http://localhost:3000",
+  "https://www.clutchzone.co",
 ];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    const ok =
-      allowedOrigins.includes(origin) ||
-      /^https:\/\/(?:[a-z0-9-]+\.)*clutchzone\.co$/i.test(origin);
-    if (ok) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    console.log("Blocked by CORS:", origin);
     return callback(new Error("Not allowed by CORS"));
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
 app.use(express.json());

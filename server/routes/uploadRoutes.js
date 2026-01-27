@@ -50,29 +50,27 @@ router.post("/", protect, uploadMiddleware, async (req, res) => {
     const files = req.files || [];
     if (!files.length) return res.status(400).json({ message: "لا توجد ملفات مرفوعة" });
     
-    const title = req.query.title || req.body.title || "upload";
+    const title = req.query.title || req.body.title;
+    if (!title || !String(title).trim()) {
+      return res.status(400).json({ message: "عنوان الإعلان مطلوب" });
+    }
     const baseSlug = slugify(title);
 
     const urls = await Promise.all(
       files.map(
         (file, index) =>
           new Promise((resolve, reject) => {
-            // Create a unique public_id: slug + index + short-hash to avoid collisions if multiple files
-            const uniqueSuffix = Date.now().toString().slice(-4) + Math.round(Math.random() * 100);
-            const publicId = `${baseSlug}-${index + 1}-${uniqueSuffix}`;
+            const publicId = `${baseSlug}-${index + 1}`;
             
             const stream = cloudinary.uploader.upload_stream(
               {
-                folder: "clutchzone/uploads",
+                folder: "clutchzone",
                 public_id: publicId,
                 resource_type: "image",
                 overwrite: false,
-                format: "auto",     // Automatically optimize format (webp/avif)
-                quality: "auto",    // Automatically optimize quality
               },
               (error, result) => {
                 if (error) return reject(error);
-                // Return secure_url directly as transformation is handled by auto:format/quality
                 resolve(result.secure_url);
               }
             );
